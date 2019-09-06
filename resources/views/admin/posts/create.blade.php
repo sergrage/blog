@@ -23,9 +23,9 @@
                 <div class="form-group">
                   <label for="cardName">Название статьи</label>
                   <input name="title" id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Введите название статьи" value="{{ old('name') }}">
-                      @if ($errors->has('name'))
+                      @if ($errors->has('title'))
                           <span class="invalid-feedback">
-                              <strong>{{ $errors->first('name') }}</strong>
+                              <strong>{{ $errors->first('title') }}</strong>
                           </span>
                       @endif
                 </div>
@@ -36,10 +36,10 @@
                 
                 <div class="form-group">
                   <label for="editor">Текст</label>
-                  <textarea name="body" id="editor" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}">{{ old('content') }}</textarea>
-                      @if ($errors->has('content'))
+                  <textarea name="body" id="editor" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}">{{ old('body') }}</textarea>
+                      @if ($errors->has('body'))
                           <span class="invalid-feedback">
-                              <strong>{{ $errors->first('content') }}</strong>
+                              <strong>{{ $errors->first('body') }}</strong>
                           </span>
                       @endif
                 </div>
@@ -59,9 +59,10 @@
   <!-- /.content-wrapper -->
 @endsection
 
-@include('ckfinder::setup')
+
 @section('ClassicEditor')
 
+@include('ckfinder::setup')
 <script>
   
 ClassicEditor
@@ -77,5 +78,5 @@ ClassicEditor
 
  
 </script>
-    
+   
 @endsection

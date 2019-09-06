@@ -37,6 +37,12 @@
       <li class="nav-item">
         <a href="" class="nav-link">
           <i class="fa fa-circle-o nav-icon"></i>
+          <p>Вопрос/Ответ</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ route('admin.contacts') }}" class="nav-link {{ request()->is('administrator/contacts') ? 'active' : '' }} {{ request()->is('administrator/contacts/*') ? 'active' : '' }}">
+          <i class="fa fa-circle-o nav-icon"></i>
           <p>Записаться на прием</p>
         </a>
       </li>

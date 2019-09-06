@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="https://api-maps.yandex.ru/2.1/?apikey={{ env('YANDEX_MAP_KEY') }}&lang=ru_RU" type="text/javascript">
+    </script>
 
   <title>HDIL | Admin</title>
 
@@ -31,9 +33,9 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
+ 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+<!--     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -42,8 +44,7 @@
           </button>
         </div>
       </div>
-    </form>
-
+    </form> -->
 <!-- Right Side Of Navbar -->
     <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
@@ -116,3 +117,4 @@
 
 @yield('modalImage')
 @yield('ClassicEditor')
+@yield('postSearch')

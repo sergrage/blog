@@ -7,13 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'body', 'public'
+        'title', 'body', 'public' , 'views'
     ];
-
 
     public function createdAtForHumans()
     {
         return $this->created_at->diffForHumans();
+    }
+
+    public function checked()
+    {
+        return $this->public=='on' ? 'checked': '';
     }
 
     public function html_cut($text, $max_length)
@@ -111,5 +115,21 @@ class Post extends Model
             $result .= "</".array_pop($tags).">";
 
         return $result;
+    }
+
+    public function addBootstrap ($value)
+    {
+        $str = str_replace('<img', "<img class='img-fluid' ", $value);
+        // $str = str_replace('<ul', "<ul class='list-group' ", $str);
+        // $str = str_replace('<ol', "<ol class='list-group' ", $str);
+        // $str = str_replace('<li', "<li class='list-group-item' ", $str);
+        $str = str_replace('<table', "<table class='table' ", $str);
+
+        return $str;
+    }
+
+    public function previewbody($text)
+    {
+        return $this->addBootstrap($this->html_cut($text, 550));
     }
 }

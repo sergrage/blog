@@ -4,86 +4,62 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\Posts\CreateRequest;
+use App\Http\Requests\Posts\UpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
 
     public function index()
     {
-        $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        // $posts = Post::paginate(3);
+        $posts = Post::latest()->paginate(3);
+        $links = '';
+        $isEmpty = $posts->isEmpty();
+        return view('admin.posts.index', compact('posts', 'isEmpty'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.posts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CreateRequest $request)
     {
-
        $post = Post::create([
             'title'  =>  $request['title'],
             'body' =>  $request['body'],
             'public' => $request['public'] ? $request['public'] : 'off',
        ]);
 
+       // здесь можно обработать фотки
+
        return redirect()->route('posts.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Post $post)
     {
-        //
+        $post->update([
+            'title'  =>  $request['title'],
+            'body' =>  $request['body'],
+            'public' => $request['public'] ? $request['public'] : 'off',
+        ]);
+
+        return redirect()->route('posts.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Post $post)
     {
         $post->delete();

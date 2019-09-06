@@ -37,7 +37,7 @@
 	                  <td>{{$user->id}}</td>
 	                  <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-	                  <td><img src="{{$user->getAvatar()}}" alt="аватар пользователя" width="120"></td>
+	                  <td><img src="{{$user->getAvatar()}}" alt="аватар пользователя" width="80"></td>
                     <td>
                       @if(!$user->isRoot())
                       <a href="{{ route('users.edit', $user) }}" class="btn btn-primary btn-sm m-0 p-1">Редактировать</a>

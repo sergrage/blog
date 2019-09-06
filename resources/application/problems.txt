@@ -1,0 +1,49 @@
+1.Как поместить User.php в Models\Usaer.php
+
+Необходимо поменять App\User на App\Models\User в User.php, config/Auth.php, database/*
+
+2. Как использовать пагинацию
+
+Запро в контроллере необходимо делать так
+$posts = Post::paginate(3);
+https://laravel.com/docs/5.8/pagination#paginating-eloquent-results
+
+Если использовать фассад $posts = DB::table('posts')->get()->paginate(3), то будет сохранена коллекция массивов и нельзя будет в шаблоне использовать функции модели.
+https://laravel.com/docs/5.8/pagination#paginating-query-builder-results
+
+3. Использование переменных в request
+
+public function rules()
+    {
+        return [
+            'title'  =>  ['required' ,
+            'string',
+            'max:255',
+            'min:6',
+            Rule::unique('posts')->ignore(request('post'))],
+            'body' =>  'required',
+        ];
+    }
+
+4. Как включить checkbox
+
+Чтобы включить checkbox, необходимо добавить аттрибут checked. т.е. не через value
+<input type="checkbox" name="public" checked>
+
+5. CKeditor 5
+a) Чтобы добавить плагин, надо использовать не готовую сборку (ClassicEditor ...), а билдить свою.
+
+https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installing-plugins.html
+
+б) для добавления фото/файлов надо использовать адаптер (ckfinder).
+https://github.com/ckfinder/ckfinder-laravel-package
+
+в) после установки, в конфиге надо настроить middleware, имя/ключ для отключение demo режима (генератор есть в интернете), путь для файлов ('/storage/userUploads/')
+
+г) не будет работать если не поключить javaScript ckfinder на страницу
+@include('ckfinder::setup')
+
+6. как добавить класс active к нужному пункту меню.
+
+используем метод request()->is('administrator/posts') ? 'active' : ''
+

@@ -18,8 +18,8 @@ const mix = require('laravel-mix');
 //     .sass('resources/assets/sass/app.scss', 'css')
 //     .version();
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/application/js/app.js', 'public/application/js')
+    .sass('resources/application/sass/app.scss', 'public/application/css');
 
 
 /*
@@ -28,12 +28,7 @@ mix.js('resources/js/app.js', 'public/js')
  |--------------------------------------------------------------------------
 */
 
-mix.styles([
-    'resources/admin/dist/css/adminlte.min.css',
-    'resources/admin/plugins/font-awesome/css/font-awesome.min.css',
-    'resources/admin/plugins/croppie/croppie.css',
-    'resources/admin/admin.css',
-  ], 'public/admin/css/admin.css')
+mix.sass('resources/admin/admin.scss' , 'public/admin/css/admin.css')
     .scripts([
     'resources/admin/plugins/jquery/jquery.min.js',
     'resources/admin/plugins/bootstrap/js/bootstrap.bundle.min.js',
