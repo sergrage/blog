@@ -34,14 +34,16 @@ class AvatarUploadController extends Controller
 		echo '<img src="/' . $imagePath .'" class="img-thumbnail" alt="avatar"/>';
 
 		// путь к аватару сохранятся в БД
-		$user = Auth::user();
+		// $user = Auth::user();
 
-		if($user->image){
-			unlink($user->image);
-		}
+		// if($user->image){
+		// 	unlink($user->image);
+		// }
 
-		$user->update([
-			'image' => $imagePath,
-		]);
+		// $user->update([
+		// 	'image' => $imagePath,
+		// ]);
+
+		return "<input type='text' class='d-none' name='image' value='". $imagePath ."'>";
     }
 }

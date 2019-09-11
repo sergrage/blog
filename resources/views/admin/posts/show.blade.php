@@ -2,7 +2,6 @@
 
 @section('content')
   
-  @include('admin.partials._navigation')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

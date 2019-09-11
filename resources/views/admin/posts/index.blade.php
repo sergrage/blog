@@ -2,62 +2,60 @@
 
 @section('content')
   
-  @include('admin.partials._navigation')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class='content-wrapper'>
-    <!-- Content Header (Page header) -->
-    <section class='content-header'>
-      <h1>Список статей</h1>
-    </section>
-
     <!-- Main content -->
     <section class='content'>
+          <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Список статей</h1>
+    <a href=" {{route('admin.posts.create') }}" class='btn btn-success'><i class='fa fa-plus'></i> Добавить новую статью</a>
+  </div>
+      
+      <table id="dataTable" width="100%" cellspacing="0" class='table table-bordered table-striped'>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Заголовок</th>
+          <th>Дата создания</th>
+          <th>Просмотры</th>
+          <th>Статус</th>
+          <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+          @foreach($posts as $post)
+          <tr>
+            <td>{{$post->id}}</td>
+            <td><b>{{$post->title}}</b></td>
+            <td><span class="badge badge-secondary m-1">{{$post->created_at}}</span></td>
+            <td>{{$post->views}}</td>
+            <td>
+              @if($post->public == 'on')
+                <span class="badge badge-success m-1">Опубликовано</span>
+              @else
+                <span class="badge badge-warning m-1">Не Опубликовано</span>
+              @endif
+            </td>
+        <!--     <td>
+              {!! $post->previewbody($post->body) !!}
+            </td> -->
+            <td>
+                <div class="btn-group-vertical">
 
-      <!-- Default box -->
-      <div class='box'>
-            <!-- /.box-header -->
-            <div class='box-body'>
-              <div class='form-group'>
-                <a href=' {{route('posts.create')}}' class='btn btn-success'><i class='fa fa-plus'></i> Добавить новый пост</a>
-              </div>
-              <div class='row'>
-                <div class='col-md-9'>
-                </div>
-                <div class='col-md-3'>
-                 <div class='form-group'>
-                  <input placeholder="Поиск" type='text' name='serach' id='serach' class='form-control' />
-                 </div>
-                </div>
+                    <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-info btn-block btn-sm m-1">Просмотреть</a>
+
+                    <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary btn-block btn-sm m-1">Редактировать</a>
+
+                    <form class="d-inline w-100" method="POST" action="{{ route('admin.posts.destroy', $post) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-block m-1 btn-sm">Удалить</button>
+                    </form>
                </div>
-              <table id='example1' class='table table-bordered table-striped'>
-                <thead>
-                <tr>
-                  <th width='5%' class='sorting' data-sorting_type='desc' data-column_name='id' style='cursor: pointer'>ID <span id='id_icon'><i class="fa fa-sort"></i></span></th>
-                  <th class='sorting' data-sorting_type='desc' data-column_name='title' style='cursor: pointer'>Заголовок <span id='title_icon'><i class="fa fa-sort"></i></span></th>
-                  <th>Дата создания</th>
-                  <th>Просмотры</th>
-                  <th>Статус</th>
-                  <th>Действие</th>
-                </tr>
-                </thead>
-                <tbody>
-                @include('admin.partials._pagination_data')
-                </tboby>
-                </table>
-            </div>
-            <input type='hidden' name='hidden_page' id='hidden_page' value='1' />
-            <input type='hidden' name='hidden_column_name' id='hidden_column_name' value='id' />
-            <input type='hidden' name='hidden_sort_type' id='hidden_sort_type' value='asc' />
-            <!-- /.box-body -->
-          </div>
-      <!-- /.box -->
+            </td>
+          </tr>
+        @endforeach
+        </tboby>
+        </table>
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-@endsection
-
-@section('postSearch')
-  @include('admin.partials._postSearchScript')
 @endsection

@@ -14,11 +14,8 @@ class PostController extends Controller
 
     public function index()
     {
-        // $posts = Post::paginate(3);
-        $posts = Post::latest()->paginate(3);
-        $links = '';
-        $isEmpty = $posts->isEmpty();
-        return view('admin.posts.index', compact('posts', 'isEmpty'));
+        $posts = Post::all();
+        return view('admin.posts.index', compact('posts'));
     }
 
     public function create()
@@ -36,7 +33,7 @@ class PostController extends Controller
 
        // здесь можно обработать фотки
 
-       return redirect()->route('posts.index');
+       return redirect()->route('admin.posts.index');
     }
 
     public function show(Post $post)
@@ -57,12 +54,12 @@ class PostController extends Controller
             'public' => $request['public'] ? $request['public'] : 'off',
         ]);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 }

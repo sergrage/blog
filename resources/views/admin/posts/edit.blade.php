@@ -2,7 +2,6 @@
 
 @section('content')
   
-  @include('admin.partials._navigation')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -18,7 +17,7 @@
       <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-              <form action="{{route('posts.update', $post)}}" method="post" accept-charset="utf-8" class="cabinet-content__form">
+              <form action="{{route('admin.posts.update', $post)}}" method="post" accept-charset="utf-8" class="cabinet-content__form">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
@@ -37,7 +36,7 @@
                 
                 <div class="form-group">
                   <label for="editor">Текст</label>
-                  <textarea name="body" id="editor" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}">{{ $post->body }}</textarea>
+                  <textarea name="body" id="editor" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}">{{ $post->body }}</textarea>
                       @if ($errors->has('body'))
                           <span class="invalid-feedback">
                               <strong>{{ $errors->first('body') }}</strong>

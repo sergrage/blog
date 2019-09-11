@@ -1,0 +1,90 @@
+1.Как поместить User.php в Models\Usaer.php
+
+Необходимо поменять App\User на App\Models\User в User.php, config/Auth.php, database/*
+
+2. Как использовать пагинацию
+
+Запро в контроллере необходимо делать так
+$posts = Post::paginate(3);
+https://laravel.com/docs/5.8/pagination#paginating-eloquent-results
+
+Если использовать фассад $posts = DB::table('posts')->get()->paginate(3), то будет сохранена коллекция массивов и нельзя будет в шаблоне использовать функции модели.
+https://laravel.com/docs/5.8/pagination#paginating-query-builder-results
+
+3. Использование переменных в request
+
+public function rules()
+    {
+        return [
+            'title'  =>  ['required' ,
+            'string',
+            'max:255',
+            'min:6',
+            Rule::unique('posts')->ignore(request('post'))],
+            'body' =>  'required',
+        ];
+    }
+
+4. Как включить checkbox
+
+Чтобы включить checkbox, необходимо добавить аттрибут checked. т.е. не через value
+<input type="checkbox" name="public" checked>
+
+5. CKeditor 5
+a) Чтобы добавить плагин, надо использовать не готовую сборку (ClassicEditor ...), а билдить свою.
+
+https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installing-plugins.html
+
+Добавить свои классы для выравнивания фотографий 
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+
+.image-style-align-right {
+    text-align: right;
+}
+
+.image-style-align-center {
+    text-align: center;
+}
+
+.image-style-align-left {
+    text-align: left;
+}
+
+б) для добавления фото/файлов надо использовать адаптер (ckfinder).
+https://github.com/ckfinder/ckfinder-laravel-package
+
+в) после установки, в конфиге надо настроить middleware, имя/ключ для отключение demo режима (генератор есть в интернете), путь для файлов ('/storage/userUploads/')
+
+г) не будет работать если не поключить javaScript ckfinder на страницу
+@include('ckfinder::setup')
+
+6. как добавить класс active к нужному пункту меню.
+
+используем метод request()->is('administrator/posts') ? 'active' : ''
+
+7. Изменить язык валидации на русский.
+
+- Во-первых, в config/app.php измени:
+'locale' => 'ru'
+
+- resources/lang создай папку ru
+
+- скинуть файлы https://github.com/caouecs/Laravel-lang/tree/master/src/ru
+
+https://scotch.io/tutorials/deep-dive-into-custom-validation-error-messages-in-laravel
+
+8. Установка плагина datatable
+
+- $('#dataTable').DataTable(); -  включаем плагин в основном файле скриптов
+- dataTables.bootstrap4.min.css - подключаем стили
+- <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+подключаем скрипты. Важна последовательность.
+
+в таблицу добавляем id="dataTable" width="100%" cellspacing="0"
+
+- для локализации добавляем к $('#dataTable').DataTable({"language": {...}});
+https://datatables.net/manual/i18n

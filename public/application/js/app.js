@@ -36758,10 +36758,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/admin/admin.scss":
-/*!************************************!*\
-  !*** ./resources/admin/admin.scss ***!
-  \************************************/
+/***/ "./resources/admin/scss/sb-admin-2.scss":
+/*!**********************************************!*\
+  !*** ./resources/admin/scss/sb-admin-2.scss ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -36850,15 +36850,16 @@ if (token) {
 /***/ }),
 
 /***/ 0:
-/*!******************************************************************************************************************!*\
-  !*** multi ./resources/application/js/app.js ./resources/application/sass/app.scss ./resources/admin/admin.scss ***!
-  \******************************************************************************************************************/
+/*!********************************************************************************************************************************************************************!*\
+  !*** multi ./resources/application/js/app.js ./resources/application/sass/app.scss ./resources/admin/scss/sb-admin-2.scss ./resources/application/scss/style.scss ***!
+  \********************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Users\Shmatovskiy.SA\Music\OSPanel\domains\blog\resources\application\js\app.js */"./resources/application/js/app.js");
 __webpack_require__(/*! C:\Users\Shmatovskiy.SA\Music\OSPanel\domains\blog\resources\application\sass\app.scss */"./resources/application/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Shmatovskiy.SA\Music\OSPanel\domains\blog\resources\admin\admin.scss */"./resources/admin/admin.scss");
+__webpack_require__(/*! C:\Users\Shmatovskiy.SA\Music\OSPanel\domains\blog\resources\admin\scss\sb-admin-2.scss */"./resources/admin/scss/sb-admin-2.scss");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\Users\\Shmatovskiy.SA\\Music\\OSPanel\\domains\\blog\\resources\\application\\scss\\style.scss'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })

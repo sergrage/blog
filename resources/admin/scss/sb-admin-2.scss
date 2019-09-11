@@ -1,0 +1,54 @@
+// Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
+@import "variables.scss";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Croppie
+@import 'croppie/croppie';
+
+// Datatables
+@import 'datatables/dataTables.bootstrap4.min';
+
+// Import Custom SB Admin 2 Mixins and Components
+@import "mixins.scss";
+@import "global.scss";
+@import "utilities.scss";
+
+// Custom Components
+@import "dropdowns.scss";
+@import "navs.scss";
+@import "buttons.scss";
+@import "cards.scss";
+@import "charts.scss";
+@import "login.scss";
+@import "error.scss";
+@import "footer.scss";
+
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #17a2b8;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-left: -8px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+
+.image-style-align-right {
+	text-align: right;
+}
+
+.image-style-align-center {
+	text-align: center;
+}
+
+.image-style-align-left {
+	text-align: left;
+}

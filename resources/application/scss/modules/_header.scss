@@ -1,0 +1,75 @@
+/* :: Header Area CSS */
+
+.header-area {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+
+    .logo-area {
+        height: 170px;
+        border-top: 1px solid #e1e1e1;
+        border-bottom: 1px solid #e1e1e1;
+        @media #{$breakpoint-xs} {
+            height: 100px;
+        }
+    }
+    .original-nav-area {
+        height: 100px;
+        @media #{$breakpoint-xs} {
+            height: 70px;
+        }
+        .subscribe-btn {
+            a {
+                display: inline-block;
+                min-width: 140px;
+                height: 40px;
+                background-color: #0d0d0d;
+                color: $color-white;
+                border-radius: 0;
+                font-size: 12px;
+                text-transform: uppercase;
+                line-height: 40px;
+                padding: 0;
+                &:hover,
+                &:focus {
+                    background-color: $hover-color;
+                }
+            }
+        }
+        .classynav ul li a {
+            text-transform: uppercase;
+            color: #4f4d4d;
+            &:focus,
+            &:hover {
+                color: $color-dark;
+            }
+        }
+        .classy-nav-container {
+            background-color: transparent;
+        }
+        .classy-navbar {
+            height: 100px;
+            padding: 0;
+            @media #{$breakpoint-xs} {
+                height: 70px;
+            }
+        }
+    }
+    .is-sticky {
+        .original-nav-area {
+            background-color: $color-white;
+            margin-top: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
+            height: 70px;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            .classy-navbar {
+                height: 70px;
+            }
+        }
+    }
+}

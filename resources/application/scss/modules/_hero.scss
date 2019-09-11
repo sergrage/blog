@@ -1,0 +1,66 @@
+/* :: Hero Slides Area CSS */
+
+.hero-slides {
+    position: relative;
+    z-index: 1;
+    .single-hero-slide {
+        position: relative;
+        z-index: 1;
+        height: 670px;
+        @media #{$breakpoint-lg} {
+            height: 500px;
+        }
+        @media #{$breakpoint-md} {
+            height: 450px;
+        }
+        @media #{$breakpoint-xs} {
+            height: 250px;
+        }
+        .slide-content {
+            display: none;
+            .post-tag {
+                margin-bottom: 15px;
+                display: block;
+                a {
+                    display: inline-block;
+                    padding: 3px 10px;
+                    background-color: $color-dark;
+                    border-radius: 2px;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-size: 10px;
+                    color: $color-white;
+                }
+            }
+            h2 {
+                a {
+                    font-size: 40px;
+                    display: inline-block;
+                    padding: 12px 20px 5px;
+                    background-color: $color-dark;
+                    border-radius: 0;
+                    text-transform: uppercase;
+                    color: $color-white;
+                    margin-bottom: 0;
+                    @media #{$breakpoint-lg} {
+                        font-size: 30px;
+                    }
+                    @media #{$breakpoint-md} {
+                        font-size: 24px;
+                    }
+                    @media #{$breakpoint-xs} {
+                        font-size: 12px;
+                        padding: 12px 10px 5px;
+                    }
+                }
+            }
+        }
+    }
+    .center {
+        .single-hero-slide {
+            .slide-content {
+                display: block;
+            }
+        }
+    }
+}
