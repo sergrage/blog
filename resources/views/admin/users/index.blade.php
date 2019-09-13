@@ -4,7 +4,7 @@
     <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Список пользователей</h1>
-    <a href=" {{route('admin.users.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Добавить нового пользователя</a>
+    <a href=" {{route('admin.users.create')}}" class="btn btn-success"><i class="fas fa-user-plus"></i> Добавить нового пользователя</a>
   </div>
   <!-- Main content -->
   <div class="row">
@@ -27,11 +27,11 @@
           <td><img class="rounded-circle" src="{{$user->getAvatar()}}" alt="аватар пользователя" width="60"></td>
           <td>
             @if(!$user->isRoot())
-            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-sm m-0 p-1">Редактировать</a>
+            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-sm m-0 p-1">Редактировать <i class="fas fa-user-edit"></i></a>
             <form class="d-inline" method="POST" action="{{ route('admin.users.destroy', $user) }}" class="mr-1">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger btn-sm m-0 p-1">Удалить</button>
+                <button class="btn btn-danger btn-sm m-0 p-1">Удалить <i class="fas fa-user-slash"></i></button>
             </form>
             @else
             <p>Редактирование пользователя не возможно</p>

@@ -3,12 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Tag; 
 
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'body', 'public' , 'views'
+        'title', 'body', 'public' , 'views', 'image', 'imageAlt'
     ];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
     public function createdAtForHumans()
     {

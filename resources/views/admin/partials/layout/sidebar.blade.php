@@ -37,6 +37,12 @@
       <span>Статьи</span>
     </a>
   </li>
+  <li class="nav-item {{ request()->is('administrator/tags') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.tags.index') }}">
+      <i class="fas fa-tags"></i>
+      <span>Тэги</span>
+    </a>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
       <i class="fas fa-fw fa-comments"></i>

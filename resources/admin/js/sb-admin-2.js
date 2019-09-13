@@ -1,5 +1,7 @@
 "use strict"; // Start of use strict
 
+ $('.select2').select2();
+
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");

@@ -11,12 +11,14 @@ class PostsAddImage extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->string('image');
+            $table->string('imageAlt');
         });
     }
 
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('imageAlt');
             $table->dropColumn('image');
         });
     }

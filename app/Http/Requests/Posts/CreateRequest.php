@@ -16,6 +16,8 @@ class CreateRequest extends FormRequest
         return [
             'title'  =>  'required|string|max:255|min:6',
             'body' =>  'required',
+            'image' =>  'required',
+            'imageAlt' =>  'required',
         ];
     }
 }

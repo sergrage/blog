@@ -46,4 +46,15 @@ class AvatarUploadController extends Controller
 
 		return "<input type='text' class='d-none' name='image' value='". $imagePath ."'>";
     }
+
+    public function postImageUpload(Request $request)
+    {
+    	$imagePath = $request['url'];
+    	echo '<img src="' . $imagePath .'" class="img-thumbnail" alt="avatar"/>';
+    	echo '<div style="text-align: left;">';
+    	echo '<label class="mt-3" for="imgAlt"><span class="text-danger">*</span> Альтернативное описание фотографии</label>';
+    	echo "<input id='imgAlt' type='text' name='imgAlt' class='form-control' placeholder='Введите описание фотографии'>";
+    	echo '</div>';
+    }
+
 }

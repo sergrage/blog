@@ -1,4 +1,15 @@
-1.Как поместить User.php в Models\Usaer.php
+РАЗВЕРТЫВАНИЕ ПРОЕКТА
+
+composer require
+npm i 
+.env
+php artisan key:generate
+php artisan migrate
+php artisan ckfinder:download
+
+
+
+1.Как поместить User.php в Models\User.php
 
 Необходимо поменять App\User на App\Models\User в User.php, config/Auth.php, database/*
 
@@ -61,6 +72,8 @@ https://github.com/ckfinder/ckfinder-laravel-package
 г) не будет работать если не поключить javaScript ckfinder на страницу
 @include('ckfinder::setup')
 
+д) после полной установки в public появятся файлы: ckfinder.js, js, fonts - их не удалять
+
 6. как добавить класс active к нужному пункту меню.
 
 используем метод request()->is('administrator/posts') ? 'active' : ''
@@ -88,3 +101,17 @@ https://scotch.io/tutorials/deep-dive-into-custom-validation-error-messages-in-l
 
 - для локализации добавляем к $('#dataTable').DataTable({"language": {...}});
 https://datatables.net/manual/i18n
+
+9. После migration:refresh  вылезла ошибка
+In Filesystem.php line 146:
+
+  rename(C:\Users\Shmatovskiy.SA\Music\OSPanel\domains\blog\bootstrap\cache\pac1D07.tmp,C:\Users\Shmatovskiy.SA\Music\OSPanel\domains\blog\bootstrap/cache/p
+  ackages.php): �������� � �������. (code: 5)
+
+Удалил все файлы в blog\bootstrap/cache/ и запустил php artisan cache:clear
+
+10. Создание промежуточной таблицы post_tag.
+
+Ошибка:  General error: 1215 Cannot add foreign key constraint
+
+Решение: правильно выставить типы полей для id
