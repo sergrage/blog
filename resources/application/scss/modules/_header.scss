@@ -23,16 +23,18 @@
                 display: inline-block;
                 min-width: 140px;
                 height: 40px;
-                background-color: #0d0d0d;
+                background-color: $mainBlue;
                 color: $color-white;
                 border-radius: 0;
                 font-size: 12px;
                 text-transform: uppercase;
                 line-height: 40px;
                 padding: 0;
+                transition: all 0.8s;
                 &:hover,
                 &:focus {
-                    background-color: $hover-color;
+                    background-color: $mainBlueLight;
+                    transition: all 0.8s;
                 }
             }
         }

@@ -1,0 +1,92 @@
+/*Color Variables*/ 
+$bc: #2d55c7;
+
+// Mixins
+@mixin transition($property: all, $duration: 300ms, $animate: linear, $delay:0s){
+    transition: $property $duration $animate $delay; 
+}  
+
+
+.multi_step_form{
+
+    display: block;
+    overflow: hidden;
+    #msform {
+        text-align: center;
+        position: relative;
+        padding-top: 50px;
+        margin: 0 auto;
+        z-index: 1; 
+
+        fieldset { 
+            border: 0; 
+            padding: 20px 105px 0;  
+            position: relative;
+            width: 100%;
+            left: 0;
+            right: 0;
+            &:not(:first-of-type) {
+                display: none;
+            }
+
+        }
+        
+        #progressbar {
+            margin-bottom: 30px;
+            overflow: hidden;  
+            li {
+                list-style-type: none;
+                color: #99a2a8; 
+                font-size: 9px;
+                width: calc(100%/3);
+                float: left;
+                position: relative; 
+                font-size: 16px; 
+                &:nth-child(2){
+                    &:before{
+                        content: "\f302";
+                    }
+                }
+                &:nth-child(3){
+                    &:before{
+                        content: "\f14a";
+                    }
+                }
+                &:before {
+                    content: "\f249";
+                    font: normal normal normal 30px/50px "Font Awesome 5 Free";
+                    width: 50px;
+                    height: 50px;
+                    line-height: 50px;
+                    display: block; 
+                    background: #eaf0f4;
+                    border-radius: 50%;
+                    margin: 0 auto 10px auto;
+                } 
+                &:after {
+                    content: '';
+                    width: 100%;
+                    height: 10px;
+                    background: #eaf0f4;
+                    position: absolute;
+                    left: -50%;
+                    top: 21px;
+                    z-index: -1; 
+                } 
+                &:last-child{
+                    &:after{
+                        width: 150%;
+                    }
+                }
+                &.active{
+                    color: $bc;
+                    &:before, &:after{
+                        background: $bc;
+                        color: white;
+                    }
+                }
+            }
+        } 
+    } 
+}
+ 

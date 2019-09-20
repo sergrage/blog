@@ -3,7 +3,7 @@
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
     <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
+      <i class="fas fa-tooth"></i>
     </div>
     <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
   </a>
@@ -37,6 +37,15 @@
       <span>Статьи</span>
     </a>
   </li>
+  <li class="nav-item {{ request()->is('administrator/comments') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.comments.index') }}">
+      <i class="fas fa-comments"></i>
+      <span>Комментарии</span>
+      @if($unreadCommenstCount !== 0) 
+        <span class="badge badge-danger">{{ $unreadCommenstCount }}</span>
+      @endif
+    </a>
+  </li>
   <li class="nav-item {{ request()->is('administrator/tags') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.tags.index') }}">
       <i class="fas fa-tags"></i>
@@ -45,8 +54,14 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
-      <i class="fas fa-fw fa-comments"></i>
+      <i class="fas fa-thumbs-up"></i>
       <span>Отзывы</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.about.index') }}">
+      <i class="fas fa-user-md"></i>
+      <span> Обо мне</span>
     </a>
   </li>
   <li class="nav-item">

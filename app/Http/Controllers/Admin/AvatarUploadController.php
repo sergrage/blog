@@ -52,8 +52,8 @@ class AvatarUploadController extends Controller
     	$imagePath = $request['url'];
     	echo '<img src="' . $imagePath .'" class="img-thumbnail" alt="avatar"/>';
     	echo '<div style="text-align: left;">';
-    	echo '<label class="mt-3" for="imgAlt"><span class="text-danger">*</span> Альтернативное описание фотографии</label>';
-    	echo "<input id='imgAlt' type='text' name='imgAlt' class='form-control' placeholder='Введите описание фотографии'>";
+    	echo '<label class="mt-3" for="imageAlt"><span class="text-danger">*</span> Альтернативное описание фотографии</label>';
+    	echo "<input id='imageAlt' type='text' name='imageAlt' class='form-control' placeholder='Введите описание фотографии'>";
     	echo '</div>';
     }
 

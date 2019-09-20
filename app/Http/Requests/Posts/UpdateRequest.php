@@ -31,6 +31,9 @@ class UpdateRequest extends FormRequest
             'min:6',
             Rule::unique('posts')->ignore(request('post'))],
             'body' =>  'required',
+            'image' =>  'required',
+            'imageAlt' =>  'required',
+            'textPreview' =>  'required|max:255|min:100',
         ];
     }
 }

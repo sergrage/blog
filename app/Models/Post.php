@@ -3,22 +3,56 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use App\Models\Tag; 
+use App\Models\Comments; 
 
 class Post extends Model
 {
+    use Sluggable;
+
+     public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    
     protected $fillable = [
-        'title', 'body', 'public' , 'views', 'image', 'imageAlt'
+        'title', 'body', 'public' , 'views', 'image', 'imageAlt', 'textPreview'
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
 
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }
 
+    public function hasTags()
+    {
+        return $this->tags->isNotEmpty();
+    }
+
     public function createdAtForHumans()
     {
         return $this->created_at->diffForHumans();
+    }
+
+    public function showDay()
+    {
+        return $this->created_at->isoFormat('D');
+    }
+
+    public function showMonth()
+    {
+        return $this->created_at->isoFormat('MMMM');
     }
 
     public function checked()

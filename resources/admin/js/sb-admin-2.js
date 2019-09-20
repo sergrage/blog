@@ -1,22 +1,25 @@
 "use strict"; // Start of use strict
 
- $('.select2').select2();
+$('.select2').select2({
+  theme: "bootstrap",
+  width: 'resolve' // need to override the changed default
+});
 
-  // Toggle the side navigation
-  $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
-    $("body").toggleClass("sidebar-toggled");
-    $(".sidebar").toggleClass("toggled");
-    if ($(".sidebar").hasClass("toggled")) {
-      $('.sidebar .collapse').collapse('hide');
-    };
-  });
+// Toggle the side navigation
+$("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
+  $("body").toggleClass("sidebar-toggled");
+  $(".sidebar").toggleClass("toggled");
+  if ($(".sidebar").hasClass("toggled")) {
+    $('.sidebar .collapse').collapse('hide');
+  };
+});
 
-  // Close any open menu accordions when window is resized below 768px
-  $(window).resize(function() {
-    if ($(window).width() < 768) {
-      $('.sidebar .collapse').collapse('hide');
-    };
-  });
+// Close any open menu accordions when window is resized below 768px
+$(window).resize(function() {
+  if ($(window).width() < 768) {
+    $('.sidebar .collapse').collapse('hide');
+  };
+});
 
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {
@@ -80,4 +83,15 @@ $.ajaxSetup({
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-
+ 
+function countChars(countFrom,displayTo) {
+  var len = document.getElementById(countFrom).value.length;
+  console.log(len);
+  document.getElementById(displayTo).innerHTML = len + ' символов введено';
+  if(len > 100 && len< 255) {
+    $('#charcount').removeClass('badge-danger');
+    $('#charcount').addClass('badge-success');
+  } else {
+    $('#charcount').addClass('badge-danger');
+  }
+}

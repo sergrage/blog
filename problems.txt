@@ -6,7 +6,7 @@ npm i
 php artisan key:generate
 php artisan migrate
 php artisan ckfinder:download
-
+php artisan db:seed --class=DatabaseSeeder
 
 
 1.Как поместить User.php в Models\User.php
@@ -115,3 +115,5 @@ In Filesystem.php line 146:
 Ошибка:  General error: 1215 Cannot add foreign key constraint
 
 Решение: правильно выставить типы полей для id
+
+11. Сломался file_get_content() в контроллере Adress. Использовал urlencode($adress) для перекодировки адреса, все заработало.

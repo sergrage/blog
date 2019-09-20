@@ -7,8 +7,20 @@
 // Croppie
 @import 'croppie/croppie';
 
+// CKEditor
+@import 'ckEditor.scss';
+
 // Select2
 @import '~select2/src/scss/core';
+
+// Select2 Bootstrap 4 vars
+@import 'select2/select2-bootstrap4.vars';
+
+// Select2 Bootstrap 4
+@import '~select2-bootstrap-theme/src/select2-bootstrap';
+
+// Select2 Bootstrap 4 after
+@import 'select2/select2-bootstrap4.after';
 
 // Datatables
 @import 'datatables/dataTables.bootstrap4.min';
@@ -28,6 +40,8 @@
 @import "error.scss";
 @import "footer.scss";
 
+// @import "postMultiForm.scss";
+
 
 .custom-file-upload {
     border: 1px solid #ccc;
@@ -37,21 +51,34 @@
     background-color: #17a2b8;
     color: #ffffff;
     border-radius: 5px;
-    margin-left: -8px;
 }
 
 .ck-editor__editable_inline {
     min-height: 400px;
 }
 
-.image-style-align-right {
-	text-align: right;
-}
+// .select2-selection__rendered {
+//     margin-bottom: 5px !important;
+// }
 
-.image-style-align-center {
-	text-align: center;
-}
+// .image-style-align-right {
+// 	text-align: right;
+// }
 
-.image-style-align-left {
-	text-align: left;
-}
+// .image-style-align-center {
+// 	text-align: center;
+// }
+
+// .image-style-align-left {
+// 	text-align: left;
+// }
+
+// .select2-selection__rendered {
+//     line-height: 31px !important;
+// }
+// .select2-container .select2-selection--single {
+//     height: 35px !important;
+// }
+// .select2-selection__arrow {
+//     height: 34px !important;
+// }

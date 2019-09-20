@@ -243,11 +243,13 @@ img {
     font-family: $opensans-fonts;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
     color: $color-dark;
+    transition: all 0.8s;
     &:hover,
     &:focus {
         font-family: $opensans-fonts;
         color: $color-white;
-        border-color: $hover-color;
-        background-color: $hover-color;
+        border-color: $mainBlue;
+        background-color: $mainBlue;
+        transition: all 0.8s;
     }
 }

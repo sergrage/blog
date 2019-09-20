@@ -30,17 +30,20 @@ class PostController extends Controller
 
        $tags_id = [];
        
+       if($request->input('tags')) {
        foreach($request->input('tags') as $tagName) {
            $tag = Tag::where('name', $tagName)->first();
            $tags_id[] = $tag->id;
-       }
+        }
+    }
 
        $post = Post::create([
             'title'  =>  $request['title'],
             'body' =>  $request['body'],
             'public' => $request['public'] ? $request['public'] : 'off',
             'image' => $request['image'],
-            'imageAlt' => $request['imgAlt'],
+            'imageAlt' => $request['imageAlt'],
+            'textPreview' => $request['textPreview'],
 
        ]);
 
@@ -58,15 +61,34 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $tags =  Tag::all();
+        $tagsListId = [];
+
+        if($post->tags->isNotEmpty()){
+            $tagsListId = $post->tags->pluck('id')->toArray();
+        }
+        return view('admin.posts.edit', compact('post', 'tags', 'tagsListId'));
     }
 
     public function update(UpdateRequest $request, Post $post)
     {
+        $tags_id = [];
+       
+        if($request->input('tags')) {
+            foreach($request->input('tags') as $tagName) {
+           $tag = Tag::where('name', $tagName)->first();
+           $tags_id[] = $tag->id;
+            }
+        }
+        
+        $post ->tags()->sync($tags_id);
         $post->update([
             'title'  =>  $request['title'],
             'body' =>  $request['body'],
             'public' => $request['public'] ? $request['public'] : 'off',
+            'image' => $request['image'],
+            'imageAlt' => $request['imageAlt'],
+            'textPreview' => $request['textPreview'],
         ]);
 
         return redirect()->route('admin.posts.index');

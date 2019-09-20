@@ -27,7 +27,9 @@
           <tr>
             <td>{{$post->id}}</td>
             <td><b>{{$post->title}}</b></td>
-            <td><span class="badge badge-secondary m-1">{{$post->created_at}}</span></td>
+            <td>
+              <span class="badge badge-secondary m-1">{{$post->created_at}}</span>
+            </td>
             <td>{{$post->views}}</td>
             <td>
               @if($post->public == 'on')
@@ -37,9 +39,14 @@
               @endif
             </td>
             <td>
-              @foreach($post->tags as $tag)
-                  <span class="badge badge-secondary">{{$tag->name}}</span>
-              @endforeach
+              @if($post->hasTags())
+                @foreach($post->tags as $tag)
+                  <span class="badge badge-primary">{{$tag->name}}</span>
+                @endforeach
+              @else
+                  <span>-</span>
+              @endif
+              
             </td>
             <td>
                 <div class="btn-group-vertical">

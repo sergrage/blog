@@ -25,13 +25,19 @@ class AdressController extends Controller
     	return view('admin.contacts.adress', compact('contacts'));
     }
 
+    public function file_get_contents_utf8($fn) {
+     $content = file_get_contents($fn);
+      return mb_convert_encoding($content, 'UTF-8',
+          mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
+}
+
     public function store(AdressRequest $request)
     {
     	$adress = $request['adress'];
     	$adress = str_replace(" ", "+", $adress);
-
-    	$response = file_get_contents('https://geocode-maps.yandex.ru/1.x/?apikey=eed57dc7-6c93-46bb-8d26-4de377ef81fd&geocode=' . $adress);
-		$xml = simplexml_load_string($response);
+        $response = file_get_contents('https://geocode-maps.yandex.ru/1.x/?apikey=eed57dc7-6c93-46bb-8d26-4de377ef81fd&geocode=' . urlencode($adress));
+    
+    	$xml = simplexml_load_string($response);
 		$pos = $xml->GeoObjectCollection->featureMember->GeoObject->Point->pos;
 		$posString =(string)$pos;
 		$posArr = explode(' ', $posString);

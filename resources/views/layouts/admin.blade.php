@@ -29,7 +29,7 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+  
     <!-- Sidebar -->
     @include('admin.partials.layout.sidebar')
     <!-- End of Sidebar -->
@@ -105,3 +105,4 @@
 
 @yield('modalImage')
 @yield('ClassicEditor')
+@yield('modalCommentAnswer')

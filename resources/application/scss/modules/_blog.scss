@@ -35,7 +35,7 @@
     }
     .single-blog-content {
         .line {
-            background-color: #c8c8c8;
+            background-color: $mainBlue;
             width: 26px;
             height: 2px;
             margin-bottom: 20px;
@@ -57,7 +57,7 @@
                 display: inline-block;
                 color: $color-dark;
                 font-size: 24px;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
                 &:hover,
                 &:focus {
                     color: $hover-color;
@@ -65,6 +65,28 @@
                 @media #{$breakpoint-lg} {
                     margin-bottom: 20px;
                 }
+                // &::after {
+                //     margin: 0 auto;
+                //     content: "";
+                //     display: block;
+                //     height: 2px;
+                //     background-color: $mainBlue;
+                //     width: 70px;
+                //     margin-top: 8px;
+                // }
+
+                // .no-after {
+                //     content: "";
+                //     &::after {
+                //     margin: 0 auto;
+                //     content: "";
+                //     display: block;
+                //     height: 2px;
+                //     background-color: transparent;
+                //     width: 70px;
+                //     margin-top: 8px;
+                //     }
+                // }
             }
         }
         > p {
@@ -120,7 +142,7 @@
         @include justify-content-center(center);
         @include trans-duration(500ms);
         &:hover {
-            background-color: $hover-color;
+            background-color: $mainBlue;
         }
         a {
             font-size: 10px;

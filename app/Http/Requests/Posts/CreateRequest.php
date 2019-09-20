@@ -18,6 +18,7 @@ class CreateRequest extends FormRequest
             'body' =>  'required',
             'image' =>  'required',
             'imageAlt' =>  'required',
+            'textPreview' =>  'required|max:255|min:100',
         ];
     }
 }
