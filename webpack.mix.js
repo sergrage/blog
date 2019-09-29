@@ -73,11 +73,14 @@ mix.copy('resources/admin/img/user_avatar.png', 'public/admin/img');
 
 /*
  |--------------------------------------------------------------------------
- | ADMIN SB 2
+ | APP
  |--------------------------------------------------------------------------
 */
 
-mix.sass('resources/application/scss/style.scss' , 'public/application/css/app.css').version();
+mix.sass('resources/application/scss/style.scss' , 'public/application/css/app.css').scripts([
+    'resources/admin/js/plugins/jquery.min.js',
+    'resources/admin/js/plugins/bootstrap.bundle.min.js',
+  ], 'public/application/js/app.js').version();
 
 mix.copy('resources/application/fonts', 'public/application/fonts').version();
 mix.copy('resources/application/img', 'public/application/img');

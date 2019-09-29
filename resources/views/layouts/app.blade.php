@@ -16,6 +16,9 @@
     <!-- Title -->
     <title>Шматовская Виктория - врач стоматолог-ортопед</title>
 
+    <!-- Custom fonts for this template-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+
     <!-- Favicon -->
     <link rel="icon" href="application/img/core-img/favicon.ico">
 
@@ -94,7 +97,10 @@
         </div>
     </div>
 </footer>
+<script src="{{ mix('application/js/app.js') }}"></script>
     <!-- ##### Footer Area End ##### -->
 </body>
 
 </html>
+
+@yield('captcha')

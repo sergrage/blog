@@ -182,7 +182,17 @@
                                     @else
                                     <div class="line"></div>
                                     @endif
-                                    <a href="#" class="post-tag">Гигиена | Ортопедия | Виниры</a>
+                                    @if($post->tags)
+                                        @foreach($post->tags as $tag)
+                                        @if($loop->last)
+                                            <a href="#" class="post-tag d-inline-block"> {{ $tag->name }}</a>
+                                        @else
+                                        <a href="#" class="post-tag d-inline-block"> {{ $tag->name }}</a> <span class="post-tag d-inline-block">|</span>
+                                       @endif
+                                        @endforeach
+                                    @endif
+                                   
+                                   
                                     <h4><a href="{{route('post.show', $post->slug)}}" class="post-headline">{{ $post->title }}</a></h4>
                                     <p>{{ $post->textPreview }}</p>
                                     <div class="post-meta"><p>3 Комментария</p><p>Опубликовано {{ $post->createdAtForHumans() }}</p></div>

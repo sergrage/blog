@@ -10,7 +10,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-    	$posts = Post::orderBy('created_at', 'desc')->get()->take(5);
+    	$posts = Post::with('tags')->orderBy('created_at', 'desc')->get()->take(5);
+        // $posts->load('tags');
         return view('app.home', compact('posts'));
     }
 
