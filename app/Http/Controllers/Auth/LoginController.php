@@ -8,11 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\RedirectsUsers;
 
 class LoginController extends Controller
 {
-    use RedirectsUsers, ThrottlesLogins;
+    use ThrottlesLogins;
 
     /**
      * Where to redirect users after login.
@@ -113,6 +112,20 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         return $request->only($this->username(), 'password');
+    }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
     }
 
     /**

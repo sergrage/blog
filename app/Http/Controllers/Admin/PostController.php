@@ -8,6 +8,7 @@ use App\Http\Requests\Posts\UpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Image; 
 
 class PostController extends Controller
 {
@@ -24,20 +25,19 @@ class PostController extends Controller
         return view('admin.posts.create', compact('tags'));
     }
 
-    public function store(CreateRequest $request)
+    public function store(Request $request)
     {
-        // dd($request);
-
-       $tags_id = [];
        
-       if($request->input('tags')) {
-       foreach($request->input('tags') as $tagName) {
-           $tag = Tag::where('name', $tagName)->first();
-           $tags_id[] = $tag->id;
+        $tags_id = [];
+       
+        if($request->input('tags')) {
+            foreach($request->input('tags') as $tagName) {
+                $tag = Tag::where('name', $tagName)->first();
+                $tags_id[] = $tag->id;
+            }
         }
-    }
 
-       $post = Post::create([
+        $post = Post::create([
             'title'  =>  $request['title'],
             'body' =>  $request['body'],
             'public' => $request['public'] ? $request['public'] : 'off',
@@ -45,13 +45,28 @@ class PostController extends Controller
             'imageAlt' => $request['imageAlt'],
             'textPreview' => $request['textPreview'],
 
-       ]);
+        ]);
 
-       $post ->tags()->sync($tags_id);
+        $image = Image::create([
+                'post_id' => $post->id,
+                'source' => $request['image'],
+            ]);
 
-       // здесь можно обработать фотки
+        $post ->tags()->sync($tags_id);
+ 
+        // здесь можно обработать фотки
 
-       return redirect()->route('admin.posts.index');
+        $html = $request['body'];
+        preg_match_all('/<img[^>]+>/i',$html, $result);
+        foreach( $result[0] as $img_tag) {
+            preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*)/i',$img_tag, $img);
+            $image = Image::create([
+                'post_id' => $post->id,
+                'source' => $img[1][0]
+            ]);
+        }
+
+        return redirect()->route('admin.posts.index');
     }
 
     public function show(Post $post)

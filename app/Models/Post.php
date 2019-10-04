@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\DB;
 use App\Models\Tag; 
-use App\Models\Comments; 
+use App\Models\Comment; 
+use App\Models\Image; 
 
 class Post extends Model
 {
@@ -19,7 +21,6 @@ class Post extends Model
             ]
         ];
     }
-
     
     protected $fillable = [
         'title', 'body', 'public' , 'views', 'image', 'imageAlt', 'textPreview'
@@ -27,12 +28,17 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comments::class);
+        return $this->hasMany(Comment::class);
     }
 
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 
     public function hasTags()
@@ -171,5 +177,24 @@ class Post extends Model
     public function previewbody($text)
     {
         return $this->addBootstrap($this->html_cut($text, 550));
+    }
+
+    public function commentsCount()
+    {
+        return $this->comments->count();
+    }
+
+    public function commentsProvenCount()
+    {
+        return $this->comments->where('status', 'active')->count();
+    }
+
+    public function delete()    
+    {
+        DB::transaction(function() 
+        {
+            $this->images()->delete();
+            parent::delete();
+        });
     }
 }

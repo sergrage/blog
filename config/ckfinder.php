@@ -92,6 +92,11 @@ $config['backends']['default'] = array(
 
 $config['defaultResourceTypes'] = '';
 
+
+$config['ImageWatermark'] = [
+    'imagePath' => '/logo2.png'
+];
+
 $config['resourceTypes'][] = array(
     'name'              => 'Files', // Single quotes not allowed.
     'directory'         => 'files',

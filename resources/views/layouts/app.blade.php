@@ -20,10 +20,14 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="application/img/core-img/favicon.ico">
+    <link rel="icon" href="/application/img/core-img/favicon.ico">
 
     <!-- Style CSS -->
     <link href="{{ mix('application/css/app.css') }}" rel="stylesheet">
+
+      <!-- Yandex map-->
+  <script src="https://api-maps.yandex.ru/2.1/?apikey={{ env('YANDEX_MAP_KEY') }}&lang=ru_RU" type="text/javascript">
+    </script>
 
 </head>
 
@@ -74,7 +78,7 @@
                                     <li><a href="about-us.html">Обо мне</a></li>
                                     <li><a href="#">Вопрос/Ответ</a></li>
                                     <li><a href="#">Отзывы</a></li>
-                                    <li><a href="contact.html">Записаться на прием</a></li>
+                                    <li><a href="{{ route('contacts') }}">Записаться на прием</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->

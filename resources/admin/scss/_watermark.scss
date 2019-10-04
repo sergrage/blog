@@ -1,0 +1,11 @@
+.imagePreview {
+	cursor: pointer;
+}
+
+.imagePreviewDark {
+	box-shadow: 0 0 10px rgba(0,0,0,0.8);
+
+	img {
+		filter: drop-shadow(0 0 3px rgba(70,108,217,0.9));
+	}
+}

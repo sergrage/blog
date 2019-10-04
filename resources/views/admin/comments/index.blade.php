@@ -9,32 +9,38 @@
         <h1 class="h3 mb-0 text-gray-800">Список комментариев</h1>
       </div>
       
-      <table id="dataTable" width="100%" cellspacing="0" class='table table-bordered table-striped'>
+      <table id="dataTable" width="100%" cellspacing="0" class='table table-bordered'>
         <thead>
         <tr>
           <th>ID</th>
           <th>Имя</th>
           <th>Дата создания</th>
+          <th>Статья</th>
           <th>Комментарий</th>
           <th>Ответ</th>
+          <th>Время ответа</th>
           <th>Статус</th>
           <th>Действие</th>
         </tr>
         </thead>
         <tbody>
           @foreach($comments as $comment)
-          <tr>
+          <tr  @if(!$comment->proven) style="background-color:rgba(0, 0, 0, 0.1)"  @endif>
             <td>{{$comment->id}}</td>
             <td><b>{{$comment->name}}</b></td>
             <td>
               <span class="badge badge-secondary m-1">{{$comment->created_at}}</span>
             </td>
+            <td>{{$comment->post->title}}</td>
             <td>{{$comment->text}}</td>
             <td>{{$comment->answer}}
 
              @if ($errors->has('answer'))
                 <span class="invalid-feedback d-block"><strong>{{ $errors->first('answer') }}</strong></span>
              @endif
+            </td>
+            <td>
+              <span class="badge badge-secondary m-1">{{$comment->answered_at}}</span>
             </td>
             <td>
               @if($comment->isActive())

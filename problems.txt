@@ -117,3 +117,5 @@ In Filesystem.php line 146:
 Решение: правильно выставить типы полей для id
 
 11. Сломался file_get_content() в контроллере Adress. Использовал urlencode($adress) для перекодировки адреса, все заработало.
+
+12. при чистке auth методов не забыть RedirectIfAuthenticated middleware. там редирект при аунтификации стоим "/home"

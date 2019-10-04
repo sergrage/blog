@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 
@@ -35,7 +35,7 @@
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column {{ request()->is('administrator/contacts/preview') ? 'bg-white' : '' }}">
 
       <!-- Main Content -->
       <div id="content">
@@ -106,3 +106,4 @@
 @yield('modalImage')
 @yield('ClassicEditor')
 @yield('modalCommentAnswer')
+@yield('imagesWatermark')

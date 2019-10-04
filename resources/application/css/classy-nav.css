@@ -13,17 +13,17 @@
   padding: 0; }
 
 body {
-  font-family: "Roboto", sans-serif;
+/*   font-family: "Roboto", sans-serif; */
   background-color: #f2f4f8;
   overflow-x: hidden; }
 
-ul,
+/* ul,
 ol {
   margin: 0; }
   ul li,
   ol li {
     list-style: none; }
-
+ */
 img {
   height: auto;
   max-width: 100%; }

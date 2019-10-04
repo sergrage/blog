@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-    	$posts = Post::with('tags')->orderBy('created_at', 'desc')->get()->take(5);
+    	$posts = Post::with('tags')->where('public', 'on')->orderBy('created_at', 'desc')->get()->take(5);
         // $posts->load('tags');
         return view('app.home', compact('posts'));
     }
@@ -24,7 +24,7 @@ class HomeController extends Controller
     }
     public function allPosts()
     {
-    	$posts = Post::all();
+    	$posts = Post::with('tags')->where('public', 'on')->orderBy('created_at', 'desc')->get();
         return view('app.posts', compact('posts'));
     }
 }

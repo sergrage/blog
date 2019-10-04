@@ -17,7 +17,7 @@
     <!-- Main content -->
     <section class="content ck-content1">
     
-    {!! $post->addBootstrap($post->body) !!}
+    {!! addBootstrap($post->body) !!}
 
     </section>
     <!-- /.content -->

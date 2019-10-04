@@ -91,6 +91,7 @@
 
 function openPopup() {
    CKFinder.popup( {
+       language: 'ru',
        chooseFiles: true,
        onInit: function( finder ) {
            finder.on( 'files:choose', function( evt ) {

@@ -21,7 +21,7 @@
     <div class="blog-wrapper section-padding-100 clearfix">
         <div class="container">
             <div class="row">
-                    @foreach($posts as $post)
+                @foreach($posts as $post)
                 <div class="col-6">
                     <div class="single-blog-area blog-style-2 mb-50">
                         <div class="row align-items-center">
@@ -33,16 +33,30 @@
                             <div class="col-12">
                                 <div class="single-blog-content">
                                     <div class="line"></div>
-                                    <a href="#" class="post-tag">Гигиена | Ортопедия | Виниры</a>
+                                    <!-- <a href="#" class="post-tag">Гигиена | Ортопедия | Виниры</a> -->
+                                    @if($post->tags)
+                                        @foreach($post->tags as $tag)
+                                        @if($loop->last)
+                                            <a href="#" class="post-tag d-inline-block"> {{ $tag->name }}</a>
+                                        @else
+                                        <a href="#" class="post-tag d-inline-block"> {{ $tag->name }}</a> <span class="post-tag d-inline-block">|</span>
+                                       @endif
+                                        @endforeach
+                                    @endif
                                     <h4><a href="{{route('post.show', $post->slug)}}" class="post-headline">{{ $post->title }}</a></h4>
                                     <p>{{ $post->textPreview }}</p>
-                                    <div class="post-meta"><p>3 Комментария</p><p>Опубликовано {{ $post->createdAtForHumans() }}</p></div>
+                                    <div class="post-meta"><p>{{$post->commentsProvenCount()}} {{ true_wordform($post->commentsProvenCount(), 'Комментариев', 'Комментарий', 'Комментария', 'Комментариев') }}</p><p>Опубликовано {{ $post->createdAtForHumans() }}</p></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                    @endforeach
+                @endforeach
+                @if($posts->isEmpty())
+                <div class="slide-content text-center">
+                    <h2>Увы, пока статей нет!</h2>
+                </div>
+                @endif
             </div>
         </div>
     </div>

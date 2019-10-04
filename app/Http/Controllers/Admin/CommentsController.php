@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use Carbon\Carbon;
 
 use App\Http\Requests\Comments\AnswerRequest;
 
@@ -14,9 +15,7 @@ class CommentsController extends Controller
     public function index()
     {
         $comments = Comment::orderBy('created_at', 'desc')->get();
-
-        $newComments = Comment::where('proven', 0)->count();
-        return view('admin.comments.index', compact('comments', 'newComments'));
+        return view('admin.comments.index', compact('comments'));
     }
 
     public function create()
@@ -30,6 +29,7 @@ class CommentsController extends Controller
         $comment->update([
             'answer' => $request['answer'],
             'proven' => 1,
+            'answered_at' => Carbon::now(),
         ]);
 
         return redirect()->route('admin.comments.index');

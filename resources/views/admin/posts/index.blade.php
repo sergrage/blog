@@ -52,6 +52,7 @@
                 <div class="btn-group-vertical">
 
                     <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-info btn-block btn-sm m-1"><i class="far fa-eye"></i> Просмотреть</a>
+                    <a href="{{ route('admin.watermark', $post) }}" class="btn btn-secondary btn-block btn-sm m-1"><i class="far fa-file-image"></i> Защита фото</a>
 
                     <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary btn-block btn-sm m-1"><i class="fas fa-edit"></i> Редактировать</a>
 

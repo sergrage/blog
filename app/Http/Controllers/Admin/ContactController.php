@@ -32,7 +32,7 @@ class ContactController extends Controller
 	    		'body'  =>  $request['body'],
     		]);
     	}
-    	return redirect()->route('admin.contacts');
+    	return redirect()->route('admin.preview');
     }
 
     public function preview()

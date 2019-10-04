@@ -11,9 +11,9 @@
                         <div class="col-12">
                             <div class="slide-content text-center">
                                 <div class="post-tag">
-                                    <a href="#">Врач стоматолог-ортопед</a>
+                                    <a href="">Врач стоматолог-ортопед</a>
                                 </div>
-                                <h2><a href="single-post.html">Шматовская Виктория Викторовна</a></h2>
+                                <h2><a href="">Шматовская Виктория Викторовна</a></h2>
                             </div>
                         </div>
                     </div>
@@ -31,8 +31,8 @@
                         <!-- Blog Content -->
                         <div class="single-blog-content">
                             <div class="line"></div>
-                            <a href="#" class="post-tag">Обо мне</a>
-                            <h4><a href="#" class="post-headline no-after">Врач стоматолог-ортопед Шматовская Виктория Викторовна</a></h4>
+                            <span class="post-tag">Обо мне</span>
+                            <h4><span class="post-headline no-after">Врач стоматолог-ортопед Шматовская Виктория Викторовна</span></h4>
                             <p>Здравствуйте, меня зовут Виктория. Я врач стоматолог-ортопед со стажем работы более 10 лет. Я веду прием и работаю в г. Петрозаводске.</p>
                             <a href="#" class="btn original-btn">Далее</a>
                         </div>
@@ -195,7 +195,7 @@
                                    
                                     <h4><a href="{{route('post.show', $post->slug)}}" class="post-headline">{{ $post->title }}</a></h4>
                                     <p>{{ $post->textPreview }}</p>
-                                    <div class="post-meta"><p>3 Комментария</p><p>Опубликовано {{ $post->createdAtForHumans() }}</p></div>
+                                    <div class="post-meta"><p>{{$post->commentsProvenCount()}} {{ true_wordform($post->commentsProvenCount(), 'Комментариев', 'Комментарий', 'Комментария', 'Комментариев') }}</p><p>Опубликовано {{ $post->createdAtForHumans() }}</p></div>
                                 </div>
                             </div>
                         </div>

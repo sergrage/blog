@@ -1,34 +1,17 @@
-@extends('layouts.admin')
-
+@extends('layouts.app')
 @section('content')
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Предпросмотр страницы контакты</h1>
-      <ul class="nav nav-tabs mt-3">
-        <li class="nav-item">
-          <a class="nav-link " href="{{route('admin.contacts')}}">Контакты</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{route('admin.adress')}}">Настройка карты</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="{{route('admin.preview')}}">Предпросмотр</a>
-        </li>
-      </ul>
-  </div>
-
-    <!-- Main content -->
     <div class="blog-wrapper section-padding-100 clearfix">
-    <section class="content ck-content1">
-      <div class="row">
-        <div class="col-12">
-          {!! addBootstrap($contacts->body) !!}
+        <div class="container ck-content1">
+            <div class="row">
+                <div class="col-12">
+                    {!! addBootstrap($contacts->body) !!}
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <hr>
-  <div id="map" style="width: 600px; height: 400px; margin: 50px auto;" ></div>
-<script type="text/javascript">
+    </div>
+    <hr>
+    <div id="map" style="width: 600px; height: 400px; margin: 50px auto;" ></div>
+    <script type="text/javascript">
     ymaps.ready(init);
     function init(){ 
         // Создание карты.    
@@ -48,5 +31,4 @@
         myMap.geoObjects.add(myPlacemark); 
     }
 </script>
-
 @endsection
