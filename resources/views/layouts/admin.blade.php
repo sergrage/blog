@@ -106,4 +106,6 @@
 @yield('modalImage')
 @yield('ClassicEditor')
 @yield('modalCommentAnswer')
+@yield('modalQuestionAnswer')
+@yield('modalReviewAnswer')
 @yield('imagesWatermark')

@@ -76,8 +76,8 @@
                                     <li><a href="/">Главная</a></li>
                                     <li><a href="{{route('posts')}}">Статьи</a></li>
                                     <li><a href="about-us.html">Обо мне</a></li>
-                                    <li><a href="#">Вопрос/Ответ</a></li>
-                                    <li><a href="#">Отзывы</a></li>
+                                    <li><a href="{{route('questions')}}">Вопрос/Ответ</a></li>
+                                    <li><a href="{{route('reviews')}}">Отзывы</a></li>
                                     <li><a href="{{ route('contacts') }}">Записаться на прием</a></li>
                                 </ul>
                             </div>

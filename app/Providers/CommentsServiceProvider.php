@@ -31,7 +31,9 @@ class CommentsServiceProvider extends ServiceProvider
     public function unreadCommenstCount()
     {
         View::composer('layouts.admin', function($view){
-            $view->with('unreadCommenstCount', \App\Models\Comment::where('proven', 0)->count());
+            $view->with('unreadCommentsCount', \App\Models\Comment::where('proven', 0)->count());
+            $view->with('unreadQuestionsCount', \App\Models\Question::where('proven', 0)->count());
+            $view->with('unreadReviewsCount', \App\Models\Review::where('proven', 0)->count());
         });
     }
 }

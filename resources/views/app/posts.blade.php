@@ -27,7 +27,7 @@
                         <div class="row align-items-center">
                             <div class="col-12">
                                 <div class="single-blog-thumbnail">
-                                    <img src="{{ $post->image }}" alt="{{ $post->imageAlt }}">
+                                    <img src="{{ $post->image }}?{{time()}}" alt="{{ $post->imageAlt }}">
                                 </div>
                             </div>
                             <div class="col-12">

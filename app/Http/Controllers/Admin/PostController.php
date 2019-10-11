@@ -47,6 +47,7 @@ class PostController extends Controller
 
         ]);
 
+        // создаем фото из превью
         $image = Image::create([
                 'post_id' => $post->id,
                 'source' => $request['image'],

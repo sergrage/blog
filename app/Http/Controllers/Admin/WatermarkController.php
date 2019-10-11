@@ -17,25 +17,45 @@ class WatermarkController extends Controller
 
     public function addWatermark(Request $request)
     {
+    	// return dd($request);
+
     	$postId = $request['post_id'];
+    	$posX = $request['positionX'];
+    	$posY= $request['positionY'];
+    	$size = $request['size'];
+    	$imageId = $request['images'];
+
+    	// для редиректа на предыдущую страницу
     	$post = Post::find($postId);
     	
-    	$images = $request['images'];
-    	// Удаляем пробелы
-    	$images = preg_replace('/\s+/', '', $images);
-    	// делим по разделителю и формируем массив
-    	$myArray = explode(',', $images);
-    	
-    	$imgSource = Image::find($myArray[0])->source;
+
+    	$imgSource = Image::find($imageId)->source;
     	$imgSource= substr($imgSource, 1); 
+    	$logoSource = 'logo2.png';
 
     	$img = InterventionImage::make($imgSource);
-	    /* insert watermark at bottom-right corner with 10px offset */
+    	$logo = InterventionImage::make($logoSource);
 
-	    $img->insert('logo2.png', 'top-right', 10, 10);
+    	$logo->resize($size , null, function ($constraint) {
+		    $constraint->aspectRatio();
+		});
+		// $logo->colorize(-100, -100, -100);
 
-	    $img->save( $imgSource);
+		$logo->save('logoTest.png');
+
+	    $img->insert('logoTest.png', 'top-left', $posX, $posY);
+
+	    $img->save($imgSource);
+
+	    $logo->destroy();
 	    return redirect()->route('admin.watermark', $post); 
    
+    }
+
+    public function returnImage(Request $request)
+    {
+    	$imageId = $request['imageId'];
+    	$imgSource = Image::find($imageId);
+    	return '<img class="mx-auto d-block originalImg" src="' . $imgSource->source .'"><img draggable="true" class="position-absolute logoImg" style="top:0; left:0" src="/logo2.png">';
     }
 }

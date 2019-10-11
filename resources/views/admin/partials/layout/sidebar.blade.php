@@ -41,8 +41,8 @@
     <a class="nav-link" href="{{ route('admin.comments.index') }}">
       <i class="fas fa-comments"></i>
       <span>Комментарии</span>
-      @if($unreadCommenstCount !== 0) 
-        <span class="badge badge-danger">{{ $unreadCommenstCount }}</span>
+      @if($unreadCommentsCount !== 0) 
+        <span class="badge badge-danger">{{ $unreadCommentsCount }}</span>
       @endif
     </a>
   </li>
@@ -52,22 +52,28 @@
       <span>Тэги</span>
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">
+  <li class="nav-item {{ request()->is('administrator/reviews') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.reviews.index') }}">
       <i class="fas fa-thumbs-up"></i>
       <span>Отзывы</span>
+      @if($unreadReviewsCount !== 0) 
+        <span class="badge badge-danger">{{ $unreadReviewsCount }}</span>
+      @endif
     </a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item ">
     <a class="nav-link" href="{{ route('admin.about.index') }}">
       <i class="fas fa-user-md"></i>
       <span> Обо мне</span>
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">
+  <li class="nav-item {{ request()->is('administrator/questions') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.questions.index') }}">
       <i class="fas fa-fw fa-question-circle"></i>
       <span>Вопрос/Ответ</span>
+      @if($unreadQuestionsCount !== 0) 
+        <span class="badge badge-danger">{{ $unreadQuestionsCount }}</span>
+      @endif
     </a>
   </li> 
   <li class="nav-item {{ request()->is('administrator/contacts') ? 'active' : '' }} {{ request()->is('administrator/adress') ? 'active' : '' }}">

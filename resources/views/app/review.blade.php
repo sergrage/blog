@@ -2,22 +2,16 @@
 @section('content')
     <!-- ##### Hero Area Start ##### -->
     <div class="hero-area">
-        
         <div class="hero-slides">
-           
-            <div class="single-hero-slide bg-img" style="background-image: url({{$post->image}}?{{time()}});">
+            <div class="single-hero-slide bg-img" style="background-image: url(/application/img/bg-img/b2.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <div class="slide-content text-center">
                                 <div class="post-tag">
-                                    <a href="">
-                                        @foreach($post->tags as $tag)
-                                            {{$tag->name}} @if (!$loop->last) | @endif
-                                        @endforeach
-                                    </a>
+                                    <a href="#">Врач стоматолог-ортопед</a>
                                 </div>
-                                <h2><a href="">{{$post->title}}</a></h2>
+                                <h2><a href="#">Шматовская Виктория Викторовна</a></h2>
                             </div>
                         </div>
                     </div>
@@ -31,34 +25,26 @@
             <div class="row pb-5">
                 <div class="col-12">
                     @if (session('success'))
-                <div class="alert alert-success mt-lg-4" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
-                    <div class="ck-content1">
-                        {!! addBootstrap($post->body) !!}
+                    <div class="alert alert-success mt-lg-4" role="alert">
+                        {{ session('success') }}
                     </div>
+                    @endif
                 </div>
                 <!-- ##### Sidebar Area ##### -->
             </div>
-            <!-- post comments -->
-        @include('app.partials.comments') 
-            <!-- /post comments -->
-
-            <!-- post reply -->
+            <!-- review form -->
             <div class="section-row">
                 <div class="section-title">
-                    <h3 class="title">Оставьте комментарий</h3>
+                    <h3 class="title">Оставьте отзыв</h3>
                 </div>
-                <form method="POST" action="{{route('commentStore')}}" role="form" id="formBottom">
+                <form method="POST" action="{{route('reviewStore')}}" role="form" id="formBottom">
                     @csrf 
-                    <input type="hidden" name="post_id" value="{{ $post->id }}">
                     <div class="form-group">
 
-                        <textarea class="form-control" name="comment" placeholder="Сообщение"></textarea>
-                        @if ($errors->has('comment'))
+                        <textarea class="form-control" name="review" placeholder="Отзыв"></textarea>
+                        @if ($errors->has('review'))
                           <span class="invalid-feedback d-block">
-                              <strong>{{ $errors->first('comment') }}</strong>
+                              <strong>{{ $errors->first('review') }}</strong>
                           </span>
                         @endif
                     </div>
@@ -94,11 +80,55 @@
                     <button type="submit" class="btn btn-primary">Отправить</button>
                 </form>
             </div>
-            
-    <!-- /post reply -->
+
+            @if($reviewsProvenCount)
+    <div class="section-row">
+        <div class="section-title">
+            <h3 class="title">{{ $reviewsProvenCount }} {{ true_wordform($reviewsProvenCount, 'Отзывов', 'Отзыв', 'Отзыва', 'Отзывов') }}</h3>
+        </div>
+        <div class="post-comments">
+            @foreach($reviews as $review)
+                @if($review->status == 'active')
+            <!-- comment -->
+            <div class="media">
+                <div class="media-left">
+                  
+                </div>
+                <div class="media-body">
+                    <div class="media-heading">
+                        <h4>{{$review->name}}</h4>
+                        <span class="time">{{$review->createdAtForHumans()}}</span>
+                    </div>
+                    <p>{{$review->text}}</p>
+                    @if($review->answer)
+                    <!-- comment -->
+                    <div class="media media-author">
+                        <div class="media-left">
+                            
+                        </div>
+                        <div class="media-body">
+                            <div class="media-heading">
+                                <h4>Виктория</h4>
+                                <span class="time">{{$review->answeredAtForHumans()}}</span>
+                            </div>
+                            <p>{{$review->answer}}</p>
+
+                        </div>
+                    </div>
+                    @endif
+                    <!-- /comment -->
+                </div>
+            </div>
+            @endif
+            <!-- /comment -->
+            @endforeach
+        </div>
+    </div>
+    @endif
         </div>
     </div>
     <!-- ##### Blog Wrapper End ##### -->
+    
 
 @endsection
 

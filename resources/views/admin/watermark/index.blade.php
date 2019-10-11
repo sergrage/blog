@@ -10,14 +10,12 @@
       </div>
       <div class="container">
         <div class="row">
-          
             <div class="col-6 bg-white p-3">
               <p>Выберите фотографию</p>
               @foreach($post->images as $image)
-                <div class="card p-3 mb-3 imagePreview" data-id="{{ $image->id }}">
-                    <img src="{{$image->source}}" class="card-img-top">
+                <div class="card p-3 mb-3 imagePreview" data-id="{{ $image->id }}" data-toggle="modal" data-target="#modalImage">
+                    <img src="{{$image->source}}?{{time()}}" class="card-img-top" >
                 </div>
-                
               @endforeach
             </div>
             <div class="col-6 bg-white p-4">
@@ -36,12 +34,9 @@
                 <input type="checkbox" class="form-check-input" id="textCheck" >
                 <label class="form-check-label" for="textCheck">Наложить текст</label>
               </div>
-              <input type="hidden" name="images" id="addWatermarkInput">
-              <input type="hidden" name="post_id" value="{{$post->id}}">
               <button type="submit" id='btnMakeWatermark' class="btn btn-primary">Применить</button>
               </form>
               <hr>
-
               <div class="card bg-dark" style="width: 18rem;">
                 <img src="/logo2.png" alt="Park" class="card-img-top p-3">
                 <div class="card-body">
@@ -52,10 +47,48 @@
             </div>
           </div>
         </div>
-      
+<!--         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalImage">
+          Launch demo modal
+        </button> -->
+        <div class="modal" tabindex="-1" role="dialog" id="modalImage">
+          <div class="modal-dialog-centered mw-100" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Наложить водяной знак</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <div class="imageContent d-inline-block position-relative"></div> 
+              </div>
+              <div class="modal-footer">
+                <input type="range" min="0" max="100" step="1" id="sizeWatermark" value="100" oninput="changeSize()">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                  <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-secondary btnLeft"><i class="fas fa-arrow-left"></i></button>
+                    <button type="button" class="btn btn-secondary btnRight"><i class="fas fa-arrow-right"></i></button>
 
-      
-
+                  </div>
+                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                  <button type="button" class="btn btn-secondary btnUp"><i class="fas fa-arrow-up"></i></button>
+                  <button type="button" class="btn btn-secondary btnDown"><i class="fas fa-arrow-down"></i></button>
+                </div>
+              </div>
+                <form action="{{route('admin.addWatermark', $post)}}" method="POST" accept-charset="utf-8">
+                  @csrf
+                  <input type="hidden" name="post_id" value="{{$post->id}}">
+                  <input type="hidden" name="images" id="addWatermarkInput">
+                  <input id="inputX" type="hidden" name="positionX" value="0">
+                  <input id="inputY" type="hidden" name="positionY" value="0">
+                  <input id="inputSize" type="hidden" name="size" value="0">
+                  <button type="submit" class="btn btn-primary saveImage">Сохранить изменения</button>
+                </form>
+                <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </section>
     <!-- /.content -->
 @endsection
@@ -63,33 +96,151 @@
 
 @section('imagesWatermark')
 <script>
- localStorage.addWatermark = false;
- if(localStorage.addWatermark === true) {
-    localStorage.addWatermark = false;
-    alarm(123);
-    window.location.reload();
- }
+
+
+  function changeSize(){
+    let size = $('#sizeWatermark').val();
+  } 
 
   var imagesIdsArray = [];
   var addWatermarkInput = $('#addWatermarkInput');
 
   $(document).on('click', '.imagePreview', function(e){
+
     $(this).toggleClass('imagePreviewDark');
     var imageId = $(this).data('id');
-    if(imagesIdsArray.indexOf(imageId) == -1){
-       imagesIdsArray.push(imageId);
-    } else {
-      var index = imagesIdsArray.indexOf(imageId);
-      imagesIdsArray.splice(index, 1);
-    }
+    
+    addWatermarkInput.val(imageId);
 
-    addWatermarkInput.val(imagesIdsArray.join(', '))
+    function changeSize(){
+      let size = $('#sizeWatermark').val();
+      console.log(size);
+    } 
 
-    if(addWatermarkInput.val()) {
-      localStorage.addWatermark = true;
-    } else {
-      localStorage.addWatermark = false;
-    }
+    $(this).toggleClass('imagePreviewDark');
+    var imageId = $(this).data('id');
+
+    $.ajax({
+        url: "/administrator/watermark/returnImage",
+        type: "POST",
+        data: {
+          imageId :  $(this).data('id')
+        },
+        headers:{
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data)
+        {
+          $('.imageContent').html(data);
+
+          let positionX = 0;
+          let positionY = 0;
+          let size = $('.logoImg').width();
+
+          let inputX = $("#inputX");
+          let inputY = $("#inputY");
+          let inputSize = $("#inputSize");
+
+          inputSize.val(size);
+
+          $('#sizeWatermark').change(function(){
+            size = $('#sizeWatermark').val();
+            $('.logoImg').css({'width': size + '%' });
+            size = ($('.originalImg').width() * size) / 100;
+            inputSize.val(size);
+          });
+
+          $(document).on('click', '.btnRight', function(e){
+            positionX = (positionX + 5) + 'px';
+            $('.logoImg').css({'left': positionX });
+            positionX = positionX.substring(0, positionX.length - 2) * 1;
+            inputX.val(positionX);
+          });
+          $(document).on('click', '.btnLeft', function(e){
+            positionX = (positionX - 5) + 'px';
+            $('.logoImg').css({'left': positionX });
+            positionX = positionX.substring(0, positionX.length - 2) * 1;
+            inputX.val(positionX);
+          });
+          $(document).on('click', '.btnUp', function(e){
+            positionY = (positionY - 5) + 'px';
+            $('.logoImg').css({'top': positionY });
+            positionY = positionY.substring(0, positionY.length - 2) * 1;
+            inputY.val(positionY);
+          });
+          $(document).on('click', '.btnDown', function(e){
+            positionY = (positionY + 5) + 'px';
+            $('.logoImg').css({'top': positionY });
+            positionY = positionY.substring(0, positionY.length - 2) * 1;
+            inputY.val(positionY);
+          });
+
+
+         var elem = document.querySelector('.imageContent'), 
+         div = document.querySelector('.logoImg'), 
+         x = 0, 
+         y = 0, 
+         mousedown = false; 
+  
+         // div event mousedown 
+         div.addEventListener('mousedown', function (e) { 
+             // mouse state set to true 
+             mousedown = true; 
+             // subtract offset 
+             x = div.offsetLeft - e.clientX; 
+             y = div.offsetTop - e.clientY; 
+         }, true); 
+          
+         // div event mouseup 
+         div.addEventListener('mouseup', function (e) { 
+             // mouse state set to false 
+             mousedown = false; 
+         }, true); 
+          
+         // element mousemove to stop 
+         elem.addEventListener('mousemove', function (e) { 
+             // Is mouse pressed 
+             if (mousedown) { 
+                 // Now we calculate the difference upwards 
+                 div.style.left = e.clientX + x + 'px'; 
+                 div.style.top = e.clientY + y + 'px'; 
+             } 
+         }, true); 
+
+          // $(document).on('click', '.saveImage', function(e){
+          //   addWatermark( positionX, positionY, size );
+          // });
+
+          $(document).on('click', '.closeModal', function(e){
+            $('.imageContent').html('');
+          });
+        },
+        error: function(){
+          alert('Что-то пошло не так!');
+        }
+    });
+
+    // function addWatermark( positionX, positionY, size ) {
+    // $.ajax({
+    //     url: "/administrator/watermark/addWatermark",
+    //     type: "POST",
+    //     data: {
+    //       positionX :  positionX,
+    //       positionY :  positionY,
+    //       size :  size
+    //     },
+    //     headers:{
+    //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     },
+    //     success: function(data)
+    //     {
+    //       $('.imageContent').html(data);
+    //     },
+    //     error: function(){
+    //       alert('Что-то пошло не так!');
+    //     }
+    // });
+    // }
 
   }); 
 </script>
