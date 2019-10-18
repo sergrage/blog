@@ -19,7 +19,6 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request)
     {
-
         $question = Question::findOrFail($request['id']);
         $question->update([
             'answer' => $request['answer'],
@@ -43,7 +42,6 @@ class QuestionController extends Controller
 
     public function unBan(Question $question)
     {
-
         $question->update([
             'status' => $question::STATUS_ACTIVE, 
             'proven' => 1,

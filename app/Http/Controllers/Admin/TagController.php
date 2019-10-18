@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 
+use App\Http\Requests\Tags\CreateRequest;
+use App\Http\Requests\Tags\UpdateRequest;
+
 class TagController extends Controller
 {
     public function index()
@@ -14,29 +17,18 @@ class TagController extends Controller
     	return view('admin.tags.index', compact('tags'));
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-    	$tag = Tag::create([
-            'name'  =>  $request['name'],
-       ]);
-
+    	$tag = Tag::create([ 'name'  =>  $request['name'], ]);
     	return redirect()->route('admin.tags.index');
     }
 
-    public function show(Tag $tag)
+    public function update(UpdateRequest $request, Tag $tag)
     {
-    	dd(123);
-    }
-
-    public function update(Request $request, Tag $tag)
-    {
-    	$tag->update([
-            'name'  =>  $request['name'],
-       ]);
-
+        // dd($request);
+    	$tag->update([ 'name'  =>  $request['name'], ]);
     	return redirect()->route('admin.tags.index');
     }
-
 
     public function destroy(Tag $tag)
     {

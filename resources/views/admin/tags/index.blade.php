@@ -45,9 +45,8 @@
                 <div class="form-group">
                     <input type="text" name="name" class="form-control" value="{{$tag->name}}">
                 </div>
-                <button class="btn btn-primary" style="margin-left:-5px;"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-primary" type="submit" style="margin-left:-5px;"><i class="fas fa-edit"></i></button>
               </form>
-
           </td>
           <td>
             <form class="form-inline" method="POST" action="{{ route('admin.tags.destroy', $tag) }}" class="mr-1">
@@ -55,9 +54,6 @@
                 @method('DELETE')
                 <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
             </form>
-            
-
-
           </td>
         </tr>
       @endforeach

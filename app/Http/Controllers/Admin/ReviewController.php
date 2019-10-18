@@ -19,7 +19,6 @@ class ReviewController extends Controller
 
     public function store(ReviewsRequest $request)
     {
-
         $review = Review::findOrFail($request['id']);
         $review->update([
             'answer' => $request['answer'],
@@ -43,7 +42,6 @@ class ReviewController extends Controller
 
     public function unBan(Review $review)
     {
-
         $review->update([
             'status' => $review::STATUS_ACTIVE, 
             'proven' => 1,

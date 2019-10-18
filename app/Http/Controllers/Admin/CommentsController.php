@@ -18,11 +18,6 @@ class CommentsController extends Controller
         return view('admin.comments.index', compact('comments'));
     }
 
-    public function create()
-    {
-        //
-    }
-
     public function store(AnswerRequest $request)
     {
         $comment = Comment::findOrFail($request['id']);
@@ -33,22 +28,6 @@ class CommentsController extends Controller
         ]);
 
         return redirect()->route('admin.comments.index');
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request)
-    {
-        //
     }
 
     public function destroy(Comment $comment)
@@ -73,8 +52,4 @@ class CommentsController extends Controller
         return redirect()->route('admin.comments.index');
     }
 
-    public function answer(Request $request)
-    {
-        dd($request);
-    }
 }
