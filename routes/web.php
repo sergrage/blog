@@ -13,6 +13,7 @@ Route::post('/reviews/store', 'App\ReviewController@store')->name('reviewStore')
 Route::post('/comment/store', 'App\CommentsController@store')->name('commentStore');
 Route::get('/posts/comment/refreshCaptcha', 'App\CommentsController@refreshCaptcha')->name('refreshCaptcha');
 Route::get('/contacts', 'App\ContactsController@index')->name('contacts');
+Route::get('/about', 'App\AboutController@index')->name('about');
 // Auth::routes();
 
 // Страница Админки
@@ -42,6 +43,7 @@ Route::group(
 		Route::post('/users/avatarUpload', 'AvatarUploadController@avatarUpload');
 		Route::post('/posts/postImageUpload', 'AvatarUploadController@postImageUpload');
 		Route::get('/contacts', 'ContactController@index')->name('contacts');
+
 		Route::get('/watermark/{post}', 'WatermarkController@image')->name('watermark');
 		Route::post('/watermark/addWatermark', 'WatermarkController@addWatermark')->name('addWatermark');
 		Route::post('/watermark/returnImage', 'WatermarkController@returnImage');

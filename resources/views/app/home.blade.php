@@ -14,6 +14,10 @@
                                     <a href="">Врач стоматолог-ортопед</a>
                                 </div>
                                 <h2><a href="">Шматовская Виктория Викторовна</a></h2>
+
+                                <div class="post-tag">
+                                    <a href="">г. Петрозаводск</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -34,6 +38,7 @@
                             <span class="post-tag">Обо мне</span>
                             <h4><span class="post-headline no-after">Врач стоматолог-ортопед Шматовская Виктория Викторовна</span></h4>
                             <p>Здравствуйте, меня зовут Виктория. Я врач стоматолог-ортопед со стажем работы более 10 лет. Я веду прием и работаю в г. Петрозаводске.</p>
+                        <!--     <img src="application/img/victoriaShmatovskaya.jpg" alt=""> -->
                             <a href="#" class="btn original-btn">Далее</a>
                         </div>
                     </div>
@@ -44,7 +49,7 @@
                         <img src="application/img/blog-img/1.jpg" alt="">
                         <!-- Catagory Title -->
                         <div class="catagory-title">
-                            <a href="#">Запись на прием</a>
+                            <a href="{{route('contacts')}}">Запись на прием</a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +59,7 @@
                         <img src="application/img/blog-img/2.jpg" alt="">
                         <!-- Catagory Title -->
                         <div class="catagory-title">
-                            <a href="#">Задать вопрос доктору</a>
+                            <a href="{{route('questions')}}">Задать вопрос доктору</a>
                         </div>
                     </div>
                 </div>

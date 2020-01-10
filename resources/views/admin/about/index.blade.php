@@ -13,7 +13,13 @@
     <section class="content">
       <form action="{{route('admin.about.store')}}" method="post" accept-charset="utf-8" class="cabinet-content__form">
         @csrf
+        <div class="form-group">
+          <label for="editor">Текст</label>
+          <textarea name="body" id="editor" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}"></textarea>
 
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Сохранить</button>
+      </form>
     
     </section>
     <!-- /.content -->
