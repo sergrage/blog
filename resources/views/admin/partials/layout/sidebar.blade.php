@@ -61,7 +61,7 @@
       @endif
     </a>
   </li>
-  <li class="nav-item ">
+  <li class="nav-item {{ request()->is('administrator/about') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.about.index') }}">
       <i class="fas fa-user-md"></i>
       <span> Обо мне</span>

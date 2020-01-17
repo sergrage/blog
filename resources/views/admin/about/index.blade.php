@@ -15,8 +15,12 @@
         @csrf
         <div class="form-group">
           <label for="editor">Текст</label>
-          <textarea name="body" id="editor" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}"></textarea>
-
+          <textarea name="body" id="editor" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}">{{ $about->body}}</textarea>
+        @if ($errors->has('body'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('body') }}</strong>
+            </span>
+        @endif
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">Сохранить</button>
       </form>

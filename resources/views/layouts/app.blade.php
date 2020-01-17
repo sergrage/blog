@@ -25,6 +25,8 @@
     <!-- Style CSS -->
     <link href="{{ mix('application/css/app.css') }}" rel="stylesheet">
 
+<!--     <link href="application/css/classy-nav.css" rel="stylesheet"> -->
+
       <!-- Yandex map-->
   <script src="https://api-maps.yandex.ru/2.1/?apikey={{ env('YANDEX_MAP_KEY') }}&lang=ru_RU" type="text/javascript">
     </script>
@@ -32,12 +34,10 @@
 </head>
 
 <body>
-
-
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
         <!-- Logo Area -->
-        <div class="logo-area text-center">
+<!--         <div class="logo-area text-center">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Nav Area -->
         <div class="original-nav-area" id="stickyNav">
             <div class="classy-nav-container breakpoint-off">
@@ -66,16 +66,16 @@
                         <!-- Menu -->
                         <div class="classy-menu" id="originalNav">
                             <!-- close btn -->
-                            <div class="classycloseIcon">
+  <!--                           <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
+                            </div> -->
 
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
                                     <li><a href="/">Главная</a></li>
                                     <li><a href="{{route('posts')}}">Статьи</a></li>
-                                    <li><a href="about-us.html">Обо мне</a></li>
+                                    <li><a href="{{route('about')}}">Обо мне</a></li>
                                     <li><a href="{{route('questions')}}">Вопрос/Ответ</a></li>
                                     <li><a href="{{route('reviews')}}">Отзывы</a></li>
                                     <li><a href="{{ route('contacts') }}">Записаться на прием</a></li>

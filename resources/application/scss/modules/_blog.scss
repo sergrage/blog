@@ -55,9 +55,12 @@
         h4 {
             a {
                 display: inline-block;
-                color: $color-dark;
+                // color: $color-dark;
+                color: #2196f3;
                 font-size: 24px;
                 margin-bottom: 20px;
+                transition: all 0.5s;
+                // transition: 0.2s;
                 &:hover,
                 &:focus {
                     color: $hover-color;

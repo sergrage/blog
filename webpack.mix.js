@@ -77,10 +77,12 @@ mix.copy('resources/admin/img/user_avatar.png', 'public/admin/img');
  |--------------------------------------------------------------------------
 */
 
-mix.sass('resources/application/scss/style.scss' , 'public/application/css/app.css').scripts([
+mix.sass('resources/application/scss/style.scss', 'public/application/css/app.css').scripts([
     'resources/admin/js/plugins/jquery.min.js',
     'resources/admin/js/plugins/bootstrap.bundle.min.js',
+    'resources/application/js/app.js',
   ], 'public/application/js/app.js').version();
 
 mix.copy('resources/application/fonts', 'public/application/fonts').version();
 mix.copy('resources/application/img', 'public/application/img');
+// mix.copy('resources/application/css/', 'public/application/css/');

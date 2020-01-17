@@ -3,6 +3,7 @@
 Route::get('/', 'App\HomeController@index')->name('home');
 Route::get('/posts', 'App\HomeController@allPosts')->name('posts');
 Route::get('/posts/{slug}', 'App\HomeController@show')->name('post.show');
+Route::get('/tag/{tag}', 'App\HomeController@showByTag')->name('post.showByTag');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');

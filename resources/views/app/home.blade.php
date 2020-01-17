@@ -190,9 +190,9 @@
                                     @if($post->tags)
                                         @foreach($post->tags as $tag)
                                         @if($loop->last)
-                                            <a href="#" class="post-tag d-inline-block"> {{ $tag->name }}</a>
+                                            <a href="/tag/{{$tag->name}}" class="post-tag d-inline-block"> {{ $tag->name }}</a>
                                         @else
-                                        <a href="#" class="post-tag d-inline-block"> {{ $tag->name }}</a> <span class="post-tag d-inline-block">|</span>
+                                        <a href="/tag/{{$tag->name}}" class="post-tag d-inline-block"> {{ $tag->name }}</a> <span class="post-tag d-inline-block">|</span>
                                        @endif
                                         @endforeach
                                     @endif
