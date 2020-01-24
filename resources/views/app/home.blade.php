@@ -39,7 +39,7 @@
                             <h4><span class="post-headline no-after">Врач стоматолог-ортопед Шматовская Виктория Викторовна</span></h4>
                             <p>Здравствуйте, меня зовут Виктория. Я врач стоматолог-ортопед со стажем работы более 10 лет. Я веду прием и работаю в г. Петрозаводске.</p>
                         <!--     <img src="application/img/victoriaShmatovskaya.jpg" alt=""> -->
-                            <a href="#" class="btn original-btn">Далее</a>
+                            <a href="{{route('about')}}" class="btn original-btn">Далее</a>
                         </div>
                     </div>
                 </div>

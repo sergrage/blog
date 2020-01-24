@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<!--     <div class="hero-area">
+        <!-- ##### Hero Area Start ##### -->
+    <div class="hero-area">
         <div class="hero-slides">
             <div class="single-hero-slide bg-img" style="background-image: url(/application/img/bg-img/b2.jpg);">
                 <div class="container h-100">
@@ -10,14 +11,17 @@
                                 <div class="post-tag">
                                     <a href="#">Врач стоматолог-ортопед</a>
                                 </div>
-                                <h2><a href="single-post.html">Шматовская Виктория Викторовна</a></h2>
+                                <h2><a href="#">Шматовская Виктория Викторовна</a></h2>
+                                <div class="post-tag">
+                                    <a href="#">г. Петрозаводск</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="blog-wrapper section-padding-100 clearfix">
         <div class="container">
             <div class="row">

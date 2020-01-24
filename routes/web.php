@@ -41,15 +41,18 @@ Route::group(
 		Route::post('/comments/answer', 'CommentsController@answer')->name('comments.answer');
 		Route::resource('/tags', 'TagController');
 		Route::resource('/about', 'AboutController');
+		Route::resource('/resume', 'ResumeController');
 		Route::post('/users/avatarUpload', 'AvatarUploadController@avatarUpload');
 		Route::post('/posts/postImageUpload', 'AvatarUploadController@postImageUpload');
-		Route::get('/contacts', 'ContactController@index')->name('contacts');
 
 		Route::get('/watermark/{post}', 'WatermarkController@image')->name('watermark');
 		Route::post('/watermark/addWatermark', 'WatermarkController@addWatermark')->name('addWatermark');
 		Route::post('/watermark/returnImage', 'WatermarkController@returnImage');
+
+		Route::get('/contacts', 'ContactController@index')->name('contacts');
 		Route::get('/contacts/preview', 'ContactController@preview')->name('preview');
 		Route::post('/contacts/store', 'ContactController@store')->name('contacts.store');
+
 		Route::get('/adress', 'AdressController@index')->name('adress');
 		Route::post('/adress/store', 'AdressController@store')->name('adress.store');
 });
