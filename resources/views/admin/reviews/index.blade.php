@@ -88,7 +88,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form  action="{{ route('admin.comments.store') }}" method="POST">
+            <form  action="{{ route('admin.reviews.store') }}" method="POST">
               @csrf
               <div class="form-group">
                 <textarea class="form-control" name="answer" rows="3"></textarea>
@@ -113,9 +113,9 @@
 $('body').click(function(e){
   if(e.target.nodeName == 'BUTTON' && $(e.target).hasClass('review-answer-btn')) {
     // Id комментария.
-    var reviewtId = $(e.target).data('id');
+    var reviewId = $(e.target).data('id');
     // input куда добавляется id комментария
-    var reviewIdInput = $('#reviewtIdInput');
+    var reviewIdInput = $('#reviewIdInput');
     // в value добавляется Id
     reviewIdInput.val(reviewId);
   }

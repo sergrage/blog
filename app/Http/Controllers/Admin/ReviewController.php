@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Carbon\Carbon;
 
-use App\Http\Requests\Questions\ReviewRequest;
+use App\Http\Requests\Reviews\ReviewRequest;
 
 class ReviewController extends Controller
 {
@@ -17,7 +17,7 @@ class ReviewController extends Controller
         return view('admin.reviews.index', compact('reviews'));
     }
 
-    public function store(ReviewsRequest $request)
+    public function store(ReviewRequest $request)
     {
         $review = Review::findOrFail($request['id']);
         $review->update([
