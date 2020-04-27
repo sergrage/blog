@@ -82,7 +82,9 @@ class UserController extends Controller
                         ->withInput();
         }
 
-        if($request['image']) {
+        // dd($user->image);
+
+        if($request['image'] && $user->image) {
             unlink($user->image);
         }
 

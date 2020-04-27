@@ -19,7 +19,8 @@ class AboutController extends Controller
 
     public function store(AboutRequest $request)
     {
-    	$about = About::create([
+    	$about = About::find(1);
+        $about->update([
     		'body' =>  $request['body']
     	]);
 
