@@ -21,7 +21,7 @@ class AvatarUploadController extends Controller
 
 		// Имя, путь, создание файла
 		$imageName = 'avatar' . time() . '.jpg';
-		$imagePath = 'storage/avatarUploads/' . $imageName;
+		$imagePath = '/storage/avatarUploads/' . $imageName;
 
 		$resu = file_put_contents($imagePath, $data);
 
