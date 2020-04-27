@@ -77,10 +77,9 @@ $(document).ready(function(){
 		            $('#uploadimageModal').modal('hide');
 		            $('#uploaded_image').html(data);
 		        },
-		        error: function(xhr, status, error){
+		        error: function(){
 		        	$('#uploadimageModal').modal('hide');
-		        	var err = eval("(" + xhr.responseText + ")");
-		        	alert(err.Message);
+		        	alert('Что-то пошло не так');
 		        }
 		    });
 	    })
