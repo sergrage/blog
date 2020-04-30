@@ -37,6 +37,12 @@
       <span>Статьи</span>
     </a>
   </li>
+  <li class="nav-item {{ request()->is('administrator/portfolio') ? 'active' : '' }} {{ request()->is('administrator/portfolio/*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.portfolio.index') }}">
+      <i class="fas fa-address-card"></i>
+      <span>Портфолио</span>
+    </a>
+  </li>
   <li class="nav-item {{ request()->is('administrator/comments') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.comments.index') }}">
       <i class="fas fa-comments"></i>

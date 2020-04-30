@@ -29,17 +29,30 @@ Route::group(
         Route::get('/', 'HomeController@index')->name('admin');
 		Route::resource('/users', 'UserController');
 		Route::resource('/posts', 'PostController');
+		Route::resource('/portfolio', 'PortfolioController');
 		Route::resource('/comments', 'CommentsController');
 		Route::resource('/questions', 'QuestionController');
 		Route::resource('/reviews', 'ReviewController');
+		
 		Route::post('/reviews/{review}/unBan', 'ReviewController@unBan')->name('reviews.unBan');
 		Route::post('/reviews/{review}/ban', 'ReviewController@ban')->name('reviews.ban');
+		
 		Route::post('/questions/{question}/unBan', 'QuestionController@unBan')->name('questions.unBan');
 		Route::post('/questions/{question}/ban', 'QuestionController@ban')->name('questions.ban');
+		
 		Route::post('/comments/{comment}/unBan', 'CommentsController@unBan')->name('comments.unBan');
 		Route::post('/comments/{comment}/ban', 'CommentsController@ban')->name('comments.ban');
 		Route::post('/comments/answer', 'CommentsController@answer')->name('comments.answer');
+		
+		Route::post('/posts/{post}/unBan', 'PostController@unBan')->name('posts.unBan');
+		Route::post('/posts/{post}/ban', 'PostController@ban')->name('posts.ban');
+		
+		Route::post('/portfolio/{portfolio}/unBan', 'PortfolioController@unBan')->name('portfolio.unBan');
+		Route::post('/portfolio/{portfolio}/ban', 'PortfolioController@ban')->name('portfolio.ban');
+
 		Route::resource('/tags', 'TagController');
+		Route::get('/about/upload','PhotoUploadController@index')->name('upload');
+		Route::post('/about/upload/store','PhotoUploadController@store')->name('upload.store');
 		Route::resource('/about', 'AboutController');
 		Route::resource('/resume', 'ResumeController');
 		Route::post('/users/avatarUpload', 'AvatarUploadController@avatarUpload');
@@ -55,4 +68,8 @@ Route::group(
 
 		Route::get('/adress', 'AdressController@index')->name('adress');
 		Route::post('/adress/store', 'AdressController@store')->name('adress.store');
+
+		Route::get('/portfolioImage/{portfolio}', 'PortfolioImageController@index')->name('portfolioImage');
+
+		
 });

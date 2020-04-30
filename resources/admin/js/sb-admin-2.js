@@ -84,11 +84,10 @@ $.ajaxSetup({
     }
 });
  
-function countChars(countFrom,displayTo) {
+function countChars(countFrom,displayTo, min, max) {
   var len = document.getElementById(countFrom).value.length;
-  console.log(len);
   document.getElementById(displayTo).innerHTML = len + ' символов введено';
-  if(len > 100 && len< 255) {
+  if(len > min && len< max) {
     $('#charcount').removeClass('badge-danger');
     $('#charcount').addClass('badge-success');
   } else {
