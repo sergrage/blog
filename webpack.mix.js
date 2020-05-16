@@ -87,4 +87,5 @@ mix.sass('resources/application/scss/style.scss', 'public/application/css/app.cs
 
 mix.copy('resources/application/fonts', 'public/application/fonts').version();
 mix.copy('resources/application/img', 'public/application/img');
+mix.copy('resources/shmatovskaya.png', 'public/shmatovskaya.png');
 // mix.copy('resources/application/css/', 'public/application/css/');
