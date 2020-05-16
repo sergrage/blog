@@ -13,7 +13,7 @@
                                 </div>
                                 <h2><a href="#">Шматовская Виктория Викторовна</a></h2>
                                 <div class="post-tag">
-                                    <a href="">г. Петрозаводск</a>
+                                    <a href="#">г. Петрозаводск</a>
                                 </div>
                             </div>
                         </div>
@@ -23,29 +23,28 @@
         </div>
     </div>
     <div class="blog-wrapper section-padding-100 clearfix">
-        <div class="container ck-content1">
-            <div class="row">
-                <div class="col-12">
-                    @isset($about)
-                        {!! addBootstrap($about->body) !!}
-                    @endisset
-
-                    @empty($about)
-                        <h3>Биография не добавлена на сайт</h3>
-                    @endempty
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="row">
-            @foreach($about->photos as $image)
-            <div class="col-md-3">
-                <a data-fancybox="images" href="{{ $image->path}}" ><img src="{{ $image->path}}" width="300px" class="p-2 img-fluid"></a>
-            </div>
-            @endforeach
+                @foreach($portfolios as $portfolio)
+                <div class="col-6">
+                    <div class="card">
+                        <img class="card-img-top" src="{{$portfolio->photos[0]->path}}" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ $portfolio->title }}</h5>
+                           <div class="card-body">
+                            <a href="{{ route('portfolio', $portfolio->id) }}" class="btn original-btn">Подробнее</a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @if($portfolios->isEmpty())
+                <div class="slide-content text-center">
+                    <h2>Увы, пока портфолио пустое</h2>
+                </div>
+                @endif
             </div>
         </div>
-     </div>
     </div>
     <hr>
 @endsection

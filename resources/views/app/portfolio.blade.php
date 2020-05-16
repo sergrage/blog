@@ -23,29 +23,32 @@
         </div>
     </div>
     <div class="blog-wrapper section-padding-100 clearfix">
-        <div class="container ck-content1">
+        
+         <div class="container p-3">
+            <h2 style="color:#878787">{{ $portfolio->title }}</h2>
             <div class="row">
-                <div class="col-12">
-                    @isset($about)
-                        {!! addBootstrap($about->body) !!}
-                    @endisset
 
-                    @empty($about)
-                        <h3>Биография не добавлена на сайт</h3>
-                    @endempty
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-            @foreach($about->photos as $image)
-            <div class="col-md-3">
+            @foreach($portfolio->photos as $image)
+            <div class="col-md-3 pt-4">
                 <a data-fancybox="images" href="{{ $image->path}}" ><img src="{{ $image->path}}" width="300px" class="p-2 img-fluid"></a>
             </div>
             @endforeach
             </div>
         </div>
+        <div class="container ck-content1 p-3">
+            <div class="row">
+                <div class="col-12">
+                    
+                    <div class="pt-4">
+                        {!! addBootstrap($portfolio->body) !!}    
+                    </div>
+                </div>
+            </div>
+            <a class="btn original-btn" href="{{ URL::previous() }}"><i class="fas fa-arrow-left"></i> Вернуться обратно</a>
+        </div>
+       
      </div>
     </div>
     <hr>
+
 @endsection

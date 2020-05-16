@@ -35,14 +35,20 @@ class PortfolioController extends Controller
     	return redirect()->route('admin.portfolio.index');
     }
 
-    public function edit(Porfolio $portfolio)
+    public function edit(Portfolio $portfolio)
     {
-    	# code...
+    	return view('admin.portfolio.edit', compact('portfolio'));
     }
 
-    public function update(Request $request, Porfolio $portfolio)
+    public function update(Request $request, Portfolio $portfolio)
     {
-    	# code...
+	     $portfolio->update([
+            'body' =>  $request['body'],
+            'title' => $request['title'],
+            'public' => $request['public'] ? $request['public'] : 'off',
+        ]);
+
+        return redirect()->route('admin.portfolio.index');
     }
 
     public function destroy(Portfolio $portfolio)

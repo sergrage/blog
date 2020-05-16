@@ -5,6 +5,7 @@ $('.select2').select2({
   width: 'resolve' // need to override the changed default
 });
 
+
 // Toggle the side navigation
 $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
   $("body").toggleClass("sidebar-toggled");

@@ -13,7 +13,7 @@
       <tr>
         <th>Id</th>
         <th>Заголовок</th>
-        <th>Текст Превью</th>
+        <th>Загружено фотографий</th>
         <th>Просмотры</th>
         <th>Статус</th>
         <th>Действие</th>
@@ -24,7 +24,7 @@
         <tr>
           <td>{{$portfolio->id}}</td>
           <td>{{$portfolio->title}}</td>
-          <td>{{$portfolio->textPreview}}</td>
+          <td>{{$portfolio->photoCount()}}</td>
           <td>{{$portfolio->views}}</td>
           <td>
               @if($portfolio->public == 'on')
@@ -35,7 +35,7 @@
   
           </td>
           <td>
-            <a href="{{ route('admin.portfolioImage', $portfolio) }}" class="btn btn-secondary btn-sm m-0 p-1">Добавить фото <i class="fa fa-plus-circle"></i></a>
+            <a href="{{ route('admin.portfolioUpload', $portfolio->id) }}" class="btn btn-secondary btn-sm m-0 p-1">Добавить фото <i class="fa fa-plus-circle"></i></a>
             <a href="{{ route('admin.portfolio.edit', $portfolio) }}" class="btn btn-primary btn-sm m-0 p-1">Редактировать <i class="fas fa-user-edit"></i></a>
             <form class="d-inline" method="POST" action="{{ route('admin.portfolio.destroy', $portfolio) }}" class="mr-1">
                 @csrf

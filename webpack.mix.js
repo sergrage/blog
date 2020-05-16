@@ -61,6 +61,7 @@ mix.sass('resources/admin/scss/sb-admin-2.scss' , 'public/admin/css/admin.css').
     'resources/admin/js/plugins/jquery.dataTables.min.js',
     'resources/admin/js/plugins/dataTables.bootstrap4.min.js',
     'resources/admin/js/plugins/croppie.min.js',
+    'resources/admin/js/plugins/jquery.fancybox.min.js',
     'resources/admin/js/plugins/select2.min.js',
     'resources/admin/js/sb-admin-2.js',
   ], 'public/admin/js/admin.js').version();
@@ -80,6 +81,7 @@ mix.copy('resources/admin/img/user_avatar.png', 'public/admin/img');
 mix.sass('resources/application/scss/style.scss', 'public/application/css/app.css').scripts([
     'resources/admin/js/plugins/jquery.min.js',
     'resources/admin/js/plugins/bootstrap.bundle.min.js',
+    'resources/admin/js/plugins/jquery.fancybox.min.js',
     'resources/application/js/app.js',
   ], 'public/application/js/app.js').version();
 

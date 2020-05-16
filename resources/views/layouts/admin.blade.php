@@ -109,3 +109,4 @@
 @yield('modalQuestionAnswer')
 @yield('modalReviewAnswer')
 @yield('imagesWatermark')
+@yield('deleteImage')
