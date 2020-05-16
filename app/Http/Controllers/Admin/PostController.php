@@ -69,4 +69,16 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
+
+    public function ban(Post $post)
+    {
+        $post->update(['public' => 'off']);
+        return redirect()->route('admin.posts.index');
+    }    
+
+    public function unBan(Post $post)
+    {
+        $post->update(['public' => 'on' ]);
+        return redirect()->route('admin.posts.index');
+    }
 }

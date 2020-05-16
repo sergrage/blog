@@ -25,6 +25,10 @@
 // Datatables
 @import 'datatables/dataTables.bootstrap4.min';
 
+// Fancybox
+
+@import 'fancybox/jquery.fancybox.min';
+
 // Import Custom SB Admin 2 Mixins and Components
 @import "mixins.scss";
 @import "global.scss";
@@ -39,6 +43,7 @@
 @import "login.scss";
 @import "error.scss";
 @import "footer.scss";
+@import "about.scss";
 
 @import "watermark.scss";
 

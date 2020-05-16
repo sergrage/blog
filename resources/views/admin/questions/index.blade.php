@@ -113,7 +113,7 @@ $('body').click(function(e){
   if(e.target.nodeName == 'BUTTON' && $(e.target).hasClass('question-answer-btn')) {
     // Id комментария.
     var questionId = $(e.target).data('id');
-    console.log(questionId);
+    // console.log(questionId);
     // input куда добавляется id комментария
     var questionIdInput = $('#questionIdInput');
     // в value добавляется Id

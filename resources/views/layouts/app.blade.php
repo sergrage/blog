@@ -3,13 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="">
+    <meta name="description" content="Сайт врача-стоматолога Шматовской Виктории Викторовны. Услуги ортопедической стоматологии в г. Петрозаводск., республика Карелия">
+
+    <meta name="keywords" content="Стоматология, Ортопедия, Петрозаводск, Карелия, коронка, протез, кариес, виниры, импланты, керамика, циркон">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="author" content="">
+    <meta name="author" content="Шматовский Сергей">
 
 
 
@@ -55,7 +57,7 @@
 
                                     <!-- Subscribe btn -->
                         <div class="subscribe-btn">
-                            <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">Портфолио</a>
+                            <a href="{{ route('portfolios') }}" class="btn subscribe-btn">Портфолио</a>
                         </div>
 
                         <!-- Navbar Toggler -->

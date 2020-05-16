@@ -46,7 +46,7 @@
           </div>
           <div class="form-group">
             <label for="textPreview">Текст превью для отображения статьи на первой странице сайта</label>
-            <textarea name="textPreview" id="textPreview" class="form-control{{ $errors->has('textPreview') ? ' is-invalid' : '' }}" onkeyup="countChars('textPreview','charcount');" onkeydown="countChars('textPreview','charcount');" onmouseout="countChars('textPreview','charcount');">{{ old('textPreview') }}</textarea>
+            <textarea name="textPreview" id="textPreview" class="form-control{{ $errors->has('textPreview') ? ' is-invalid' : '' }}" onkeyup="countChars('textPreview','charcount', 100, 255);" onkeydown="countChars('textPreview','charcount');" onmouseout="countChars('textPreview','charcount');">{{ old('textPreview') }}</textarea>
             <small class="form-text text-muted">Введите от 100 до 255 символов</small>
             <span id="charcount" class="badge badge-danger">0 символов введено</span>
             @if ($errors->has('textPreview'))

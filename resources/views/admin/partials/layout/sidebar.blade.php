@@ -5,7 +5,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-tooth"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    <div class="sidebar-brand-text mx-3">Админка</div>
   </a>
 
   <!-- Divider -->
@@ -15,7 +15,7 @@
   <li class="nav-item">
     <a class="nav-link" href="{{route('admin.admin')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
+      <span>Главная страница</span></a>
   </li>
 
   <!-- Divider -->
@@ -35,6 +35,12 @@
     <a class="nav-link" href="{{ route('admin.posts.index') }}">
       <i class="fas fa-fw fa-file"></i>
       <span>Статьи</span>
+    </a>
+  </li>
+  <li class="nav-item {{ request()->is('administrator/portfolio') ? 'active' : '' }} {{ request()->is('administrator/portfolio/*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.portfolio.index') }}">
+      <i class="fas fa-address-card"></i>
+      <span>Портфолио</span>
     </a>
   </li>
   <li class="nav-item {{ request()->is('administrator/comments') ? 'active' : '' }}">
@@ -85,13 +91,13 @@
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <!-- Divider -->
-  <hr class="sidebar-divider">
+<!--   <hr class="sidebar-divider"> -->
 
   <!-- Heading -->
-  <div class="sidebar-heading">Addons</div>
-
+<!--   <div class="sidebar-heading">Addons</div>
+ -->
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+<!--   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
       <i class="fas fa-fw fa-folder"></i>
       <span>Pages</span>
@@ -109,20 +115,20 @@
       </div>
     </div>
   </li>
-
+ -->
   <!-- Nav Item - Charts -->
-  <li class="nav-item">
+<!--   <li class="nav-item">
     <a class="nav-link" href="charts.html">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Charts</span></a>
-  </li>
+  </li> -->
 
   <!-- Nav Item - Tables -->
-  <li class="nav-item">
+<!--   <li class="nav-item">
     <a class="nav-link" href="tables.html">
       <i class="fas fa-fw fa-table"></i>
       <span>Tables</span></a>
-  </li>
+  </li> -->
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

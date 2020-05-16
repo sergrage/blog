@@ -33,10 +33,19 @@
                     @empty($about)
                         <h3>Биография не добавлена на сайт</h3>
                     @endempty
-                    
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+            @foreach($about->photos as $image)
+            <div class="col-md-3">
+                <a data-fancybox="images" href="{{ $image->path}}" ><img src="{{ $image->path}}" width="300px" class="p-2 img-fluid"></a>
+            </div>
+            @endforeach
+            </div>
+        </div>
+     </div>
     </div>
     <hr>
 @endsection

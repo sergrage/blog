@@ -61,6 +61,17 @@
                         @method('DELETE')
                         <button class="btn btn-danger btn-block m-1 btn-sm"><i class="fas fa-trash-alt"></i> Удалить</button>
                     </form>
+                    @if($post->public == 'on')
+                    <form class="d-inline w-100" method="POST" action="{{ route('admin.posts.ban', $post) }}">
+                        @csrf
+                        <button class="btn btn-warning btn-block m-1 btn-sm">Снять с публикации</button>
+                    </form>
+                    @else
+                    <form class="d-inline w-100" method="POST" action="{{ route('admin.posts.unBan', $post) }}">
+                        @csrf
+                        <button class="btn btn-success btn-block m-1 btn-sm">Опубликовать</button>
+                    </form>
+                    @endif
                </div>
             </td>
           </tr>
