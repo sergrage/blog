@@ -160,8 +160,8 @@
                         </div>
                     </div> -->
 
-                    @foreach($posts as $post)
-                    <div class="single-blog-area blog-style-2 mb-50">
+                    @foreach($content as $item)
+                    <div class="single-blog-area blog-style-2 mb-50 mt-50">
                         <div class="row align-items-center">
                             <div class="
                                 @if($loop->index == 2) 
@@ -171,7 +171,7 @@
                                 @endif
                             ">
                                 <div class="single-blog-thumbnail">
-                                    <img src="{{ $post->image }}" alt="{{ $post->imageAlt }}">
+                                    <img src="{{ $item->image }}" alt="{{ $item->imageAlt }}">
                                 </div>
                             </div>
                             <div class="
@@ -182,13 +182,13 @@
                                 @endif
                             ">
                                 <div class="single-blog-content">
-                                    @if($loop->index == 3) 
+                                    @if($loop->index == 2) 
                                     
                                     @else
                                     <div class="line"></div>
                                     @endif
-                                    @if($post->tags)
-                                        @foreach($post->tags as $tag)
+                                    @if($item->tags)
+                                        @foreach($item->tags as $tag)
                                         @if($loop->last)
                                             <a href="/tag/{{$tag->name}}" class="post-tag d-inline-block"> {{ $tag->name }}</a>
                                         @else
@@ -196,15 +196,19 @@
                                        @endif
                                         @endforeach
                                     @endif
-                                   
-                                   
-                                    <h4><a href="{{route('post.show', $post->slug)}}" class="post-headline">{{ $post->title }}</a></h4>
-                                    <p>{{ $post->textPreview }}</p>
-                                    <div class="post-meta"><p>{{$post->commentsProvenCount()}} {{ true_wordform($post->commentsProvenCount(), 'Комментариев', 'Комментарий', 'Комментария', 'Комментариев') }}</p><p>Опубликовано {{ $post->createdAtForHumans() }}</p></div>
+                                    <h4><a href="{{route('post.show', $item->slug)}}" class="post-headline">{{ $item->title }}</a></h4>
+                                    <p>{{ $item->textPreview }}</p>
+                                    <div class="post-meta"><p>{{$item->commentsProvenCount()}} {{ true_wordform($item->commentsProvenCount(), 'Комментариев', 'Комментарий', 'Комментария', 'Комментариев') }}</p><p>Опубликовано {{ $item->createdAtForHumans() }}</p></div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @if ($loop->last)
+
+                    @else
+                    <hr>
+                    @endif
+                    
                     @endforeach
                 </div>
 

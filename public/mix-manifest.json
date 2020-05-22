@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "/admin/css/admin.css": "/admin/css/admin.css?id=3e5107a78d2078d06c45",
     "/application/css/app.css": "/application/css/app.css?id=291a134df80fb391b2b7",
     "/admin/js/admin.js": "/admin/js/admin.js?id=ec119841620e4d00ec95",
@@ -6,4 +7,13 @@
     "/admin/img/user_avatar.png": "/admin/img/user_avatar.png?id=387eb7efca45b45c9dbe",
     "/application/js/app.js": "/application/js/app.js?id=2da2a195732cc67a845d",
     "/shmatovskaya.png": "/shmatovskaya.png?id=04851bce721a0771ba3e"
+=======
+    "/admin/css/admin.css": "/admin/css/admin.css?id=02ddd17d5d6259557488",
+    "/application/css/app.css": "/application/css/app.css?id=0560b194095d1f1e230d",
+    "/admin/js/admin.js": "/admin/js/admin.js?id=dfe7706f736a75469400",
+    "/admin/js/ckeditor.js": "/admin/js/ckeditor.js?id=25131f81cfc4c546cba4",
+    "/admin/img/user_avatar.png": "/admin/img/user_avatar.png?id=80da367d628acdce8921",
+    "/application/js/app.js": "/application/js/app.js?id=ec4237e732d984ab84e8",
+    "/shmatovskaya.png": "/shmatovskaya.png?id=841da8165fae863449ae"
+>>>>>>> 699cdf72f1f0399abe04ed301dfd5a16ebf9a2c3
 }

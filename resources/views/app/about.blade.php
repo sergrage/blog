@@ -40,7 +40,7 @@
             <div class="row">
             @foreach($about->photos as $image)
             <div class="col-md-3">
-                <a data-fancybox="images" href="{{ $image->path}}" ><img src="{{ $image->path}}" width="300px" class="p-2 img-fluid"></a>
+                <a data-fancybox="images" href="{{ $image->path}}" ><img src="{{ $image->path}}" width="300px" class="p-2 img-fluid" alt="{{ $image->alt }}"></a>
             </div>
             @endforeach
             </div>

@@ -25,7 +25,6 @@ class TagController extends Controller
 
     public function update(UpdateRequest $request, Tag $tag)
     {
-        // dd($request);
     	$tag->update([ 'name'  =>  $request['name'], ]);
     	return redirect()->route('admin.tags.index');
     }

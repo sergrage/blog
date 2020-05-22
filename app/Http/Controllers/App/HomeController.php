@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Portfolio;
 use App\Models\Tag;
 
 class HomeController extends Controller
@@ -14,8 +15,18 @@ class HomeController extends Controller
     public function index()
     {
     	$posts = Post::with('tags')->where('public', 'on')->orderBy('created_at', 'desc')->get()->take(5);
+        // dd($posts);
+
+        // $portfolios = Portfolio::where('public', 'on')->orderBy('created_at', 'desc')->get()->take(5);
+        $content = $posts;
+        // $content = $posts->merge($portfolios)->sortBy('created_at');
+        // dd($content );
+        // foreach($content as $item){
+        //     dd(get_class($item));
+        // }
+        // dd($content);
         // $posts->load('tags');
-        return view('app.home', compact('posts'));
+        return view('app.home', compact('content'));
     }
 
     public function show($slug)

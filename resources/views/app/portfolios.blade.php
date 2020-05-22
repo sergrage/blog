@@ -28,7 +28,7 @@
                 @foreach($portfolios as $portfolio)
                 <div class="col-6">
                     <div class="card">
-                        <img class="card-img-top" src="{{$portfolio->photos[0]->path}}" alt="Card image cap">
+                        <img class="card-img-top" src="{{$portfolio->photos[0]->path}}" alt="{{ $portfolio->photos[0]->alt }}">
                         <div class="card-body">
                           <h5 class="card-title">{{ $portfolio->title }}</h5>
                            <div class="card-body">
