@@ -23,20 +23,8 @@
               </span>
             @endif
         </div>
-
-        <div class="form-group">
-            <label for="textPreview"><b>Текст превью для отображения во вкладке портфолио</b></label>
-            <textarea name="textPreview" id="textPreview" class="form-control{{ $errors->has('textPreview') ? ' is-invalid' : '' }}" onkeyup="countChars('textPreview','charcount');" onkeydown="countChars('textPreview','charcount', 10, 50);" onmouseout="countChars('textPreview','charcount');">{{ old('textPreview') }}</textarea>
-            <small class="form-text text-muted">Введите от 100 до 255 символов</small>
-            <span id="charcount" class="badge badge-danger">0 символов введено</span>
-            @if ($errors->has('textPreview'))
-              <span class="invalid-feedback">
-                  <strong>{{ $errors->first('textPreview') }}</strong>
-              </span>
-            @endif
-        </div>
         <hr>
-        <h3><b>Шаг 2.</b>Опишите работу</h3>
+        <h3><b>Шаг 1.</b>Опишите работу</h3>
         <div class="form-group">
           <label for="editor">Описание работы</label>
           <textarea name="body" id="editor" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}">{{ old('body') }}</textarea>
@@ -47,21 +35,7 @@
             @endif
         </div>
         <hr>
-          <h3><b>Шаг 3.</b> Выберите фотографии и введите превью</h3>
-          <div class="form-group my-4" id="ckfinder-widget">
-            <input type="text" size="48" name="image" id="imageUrl" class="d-none form-control-file"/>
-            <label onclick="openPopup()" for="imageUrl"  class="custom-file-upload">Выберите фотографию</label>
-            @if ($errors->has('image'))
-              <span class="invalid-feedback d-inline">
-                  <strong>{{ $errors->first('image') }}</strong>
-              </span>
-            @endif
-            <div id="postImageUpload" style="text-align: center;"></div>
-          </div>
-
-        
-        <hr>
-        <h3><b>Шаг 4.</b> Нажмите опубликовать или оставьте в черновиках</h3>
+        <h3><b>Шаг 3.</b> Нажмите опубликовать или оставьте в черновиках</h3>
         <div class="form-group form-check">
             <input type="checkbox" name="public" class="form-check-input" id="publicCheck">
             <label class="form-check-label" for="publicCheck">Опубликовать</label>

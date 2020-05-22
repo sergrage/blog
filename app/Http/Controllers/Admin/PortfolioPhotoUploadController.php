@@ -14,9 +14,16 @@ class PortfolioPhotoUploadController extends Controller
     public function addImage($id)
 	{
 		$portfolio = Portfolio::find($id);
-		// dd($portfolio->id);
 		return view('admin.portfolioImageUpload.index', compact('portfolio'));	
 	}
+
+    public function update(Request $request, $photo)
+    {
+       $photo = Photo::find($photo);
+       $id = $request['id'];
+       $photo->update([ 'alt'  =>  $request['alt'], ]); 
+       return redirect()->route('admin.portfolioUpload', compact('id'));
+    }
 
     public function store(UploadRequest $request)
     {

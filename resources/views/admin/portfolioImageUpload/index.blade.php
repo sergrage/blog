@@ -45,8 +45,17 @@
               @foreach($portfolio->photos as $photo)
                 <div class="col-md-3">
                   <div class="card m-1">
-                    <a data-fancybox="images" href="{{ $photo->path}}" ><img src="{{ $photo->path}}" width="300px" class="p-2 img-fluid"></a>
+                    <a data-fancybox="images" href="{{ $photo->path}}" ><img src="{{ $photo->path}}" class="p-2 img-fluid"></a>
                     <div class="card-body">
+                      <form action="{{ route('admin.portfolioUpload.update', $photo)}}" method="POST" class="form-inline">
+                      @csrf
+                      @method('PUT')
+                      <input type="text" name="alt" class="form-control" value="{{$photo->alt}}" style="width:80%">
+                      <input type="hidden" name="id" value="{{ $portfolio->id }}">  
+                      <button class="btn btn-primary" type="submit" style="margin-left:-5px;">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      </form>
                       <form class="d-inline w-100" method="POST" action="{{ route('admin.portfolioUpload.destroy', $photo)}}">
                         @csrf
                         @method('DELETE')

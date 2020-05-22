@@ -30,9 +30,17 @@ class AboutPhotoUploadController extends Controller
             $path = '/storage/images/' . $newName;
             $photo = new Photo;
             $photo->path = $path;
+            $photo->alt = 'Сертификат участия в семинаре';
             $about->photos()->save($photo); 
         }
        	return redirect()->route('admin.aboutUpload.index');
+    }
+
+    public function update(Request $request, $photo)
+    {
+       $photo = Photo::find($photo);
+       $photo->update([ 'alt'  =>  $request['alt'], ]); 
+       return redirect()->route('admin.aboutUpload.index');
     }
 
     public function destroy($photo)

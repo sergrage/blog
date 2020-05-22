@@ -29,7 +29,6 @@ class PortfolioController extends Controller
     		'title' => $request['title'],
     		'view' => 0,
     		'public' => 'off',
-    		'textPreview' => $request['textPreview'],
     	]);
 
     	return redirect()->route('admin.portfolio.index');
@@ -40,7 +39,7 @@ class PortfolioController extends Controller
     	return view('admin.portfolio.edit', compact('portfolio'));
     }
 
-    public function update(Request $request, Portfolio $portfolio)
+    public function update(UpdateRequest $request, Portfolio $portfolio)
     {
 	     $portfolio->update([
             'body' =>  $request['body'],
@@ -53,12 +52,19 @@ class PortfolioController extends Controller
 
     public function destroy(Portfolio $portfolio)
     {
+        foreach($portfolio->photos as $photo) {
+            $pth = substr($photo->path, 1);
+            unlink($pth);
+            $photo->delete();
+        }
+
     	$portfolio->delete();
         return redirect()->route('admin.portfolio.index');
     }
 
     public function ban(Portfolio $portfolio)
     {
+
         $portfolio->update(['public' => 'off']);
         return redirect()->route('admin.portfolio.index');
     }    
