@@ -176,6 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\CommentsServiceProvider::class,
+	// Spatie\Sitemap\SitemapServiceProvider::class,
 
     ],
 
@@ -183,7 +184,7 @@ return [
     |--------------------------------------------------------------------------
     | Class Aliases
     |--------------------------------------------------------------------------
-    |
+    |[<0;82;20M
     | This array of class aliases will be registered when this application
     | is started. However, feel free to register as many as you wish as
     | the aliases are "lazy" loaded so they don't hinder performance.

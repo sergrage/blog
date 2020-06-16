@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Сайт врача-стоматолога Шматовской Виктории Викторовны. Услуги ортопедической стоматологии в г. Петрозаводск., республика Карелия">
-
+    <meta name="yandex-verification" content="320bf2a9af236dcc" />
+    <meta name="google-site-verification" content="IziXSkRWv1ZmMpiwzplxlqAPIm78TZz1BeqlzYWOg_A" />
     <meta name="keywords" content="Стоматология, Ортопедия, Петрозаводск, Карелия, коронка, протез, кариес, виниры, импланты, керамика, циркон">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -99,6 +100,7 @@
         <div class="row">
             <div class="col-12">
                 <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> Все права защищены</p>
+		<a href="https://www.vk.com/sergrage">Создатель сайта: С.А. Шматовский</a>
             </div>
         </div>
     </div>

@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 @foreach($posts as $post)
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="single-blog-area blog-style-2 mb-50">
                         <div class="row align-items-center">
                             <div class="col-12">

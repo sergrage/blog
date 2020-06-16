@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 @foreach($portfolios as $portfolio)
-                <div class="col-6">
+                <div class="col-12 col-md-6 pb-5">
                     <div class="card">
                         <img class="card-img-top" src="{{$portfolio->photos[0]->path}}" alt="{{ $portfolio->photos[0]->alt }}">
                         <div class="card-body">
