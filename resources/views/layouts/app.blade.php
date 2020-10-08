@@ -6,14 +6,28 @@
     <meta name="description" content="Сайт врача-стоматолога Шматовской Виктории Викторовны. Услуги ортопедической стоматологии в г. Петрозаводск., республика Карелия">
     <meta name="yandex-verification" content="320bf2a9af236dcc" />
     <meta name="google-site-verification" content="IziXSkRWv1ZmMpiwzplxlqAPIm78TZz1BeqlzYWOg_A" />
-    <meta name="keywords" content="Стоматология, Ортопедия, Петрозаводск, Карелия, коронка, протез, кариес, виниры, импланты, керамика, циркон">
+    <meta name="keywords" content="стоматология,стоматология Петрозаводск,платная стоматология Петрозаводск,стоматология Петрозаводск адреса, врач стоматолог, Ортопедия, Петрозаводск, Карелия, коронка, протез, кариес, виниры, импланты, керамика, циркон">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="author" content="Шматовский Сергей">
+    
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
+   ym(65046184, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/65046184" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 
     <!-- Title -->
@@ -23,7 +37,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="/application/img/core-img/favicon.ico">
+    <link rel="icon" href="https://shmatovskaya.ru/favicon.jpeg" type="image/jpeg">
 
     <!-- Style CSS -->
     <link href="{{ mix('application/css/app.css') }}" rel="stylesheet">

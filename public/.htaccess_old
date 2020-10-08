@@ -5,11 +5,6 @@
 
     RewriteEngine On
 
-    # Deny access from different domains
-    RewriteCond %{HTTP_HOST} !^shmatovskaya.ru$ [NC]
-    RewriteCond %{HTTP_HOST} !^www.shmatovskaya.ru$ [NC]
-    RewriteRule .* - [forbidden,last]
-
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
